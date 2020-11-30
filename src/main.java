@@ -16,6 +16,7 @@ public class main {
         Usuario usuario1 = null, usuario2 = null;
         boolean usuario1Logeado = false, usuario2Logeado = false;
         String correo, contrasenia, nombre;
+        boolean articuloComprado = false;
 
         //BIENVENIDA
         System.out.println("Bienvenido a FernanPop");
@@ -167,54 +168,49 @@ public class main {
                         case 3:
                             //Mostrar articulos que estan en venta.
                             if (usuario1Logeado) {
-                                //Comprueba que el usuario haya puesto en venta una articulo y que no haya ningun articulo comprado.
+                                //Comprueba que el usuario se haya puesto en venta una articulo.
                                 if (usuario1.getVenta() != null) {
-                                    boolean estaEnVenta = false;
-                                    if (usuario1.isArticulo1Vendido()) {
-                                        System.out.println("Tus Articulos en venta son: ");
-                                        System.out.println("============================");
-                                        System.out.println(usuario1.getArticulo1());
-                                        estaEnVenta = true;
-                                    }
+                                    //Si el articulo se ha comprado te printea.
+                                    if(articuloComprado) {
+                                        System.out.println("Tus artículos ya no estan en venta");
+                                    } else {
+                                        if (usuario1.isArticulo1EnVenta()) {
+                                            System.out.println("Tus Articulos en venta son: ");
+                                            System.out.println("============================");
+                                            System.out.println(usuario1.getArticulo1());
+                                        }
 
-                                    if (usuario1.isArticulo2Vendido()) {
-                                        System.out.println("Tus Articulos en venta son: ");
-                                        System.out.println("============================");
-                                        System.out.println(usuario1.getArticulo2());
-                                        estaEnVenta = true;
+                                        if (usuario1.isArticulo2EnVenta()) {
+                                            System.out.println("Tus Articulos en venta son: ");
+                                            System.out.println("============================");
+                                            System.out.println(usuario1.getArticulo2());
+                                        }
                                     }
-
-                                    if (!estaEnVenta) {
-                                        System.out.println("No tienes ningún artículo en venta!");
-                                    }
-                                } else  if (usuario2 == null){// Comprueba si el articulo ha sido comprado.
-                                    System.out.println("No tienes ningún artículo en venta!");
-                                } 
-
+                                } else {
+                                    System.out.println("No hay artículos en venta");
+                                }
 
                             } else if (usuario2Logeado) {
-                                //Comprueba que el usuario haya puesto en venta una articulo y que no haya ningun articulo comprado.
+                                //Comprueba que el usuario se haya puesto en venta.
                                 if (usuario2.getVenta() != null) {
-                                    boolean estaEnVenta = false;
-                                    if (usuario2.isArticulo1Vendido()) {
-                                        System.out.println("Tus Articulos en venta son: ");
-                                        System.out.println("============================");
-                                        System.out.println(usuario2.getArticulo1());
-                                        estaEnVenta = true;
-                                    }
+                                    //Si el articulo se ha comprado te printea.
+                                    if (articuloComprado) {
+                                        System.out.println("Tus artículos ya no estan en venta");
+                                    } else {
+                                        if (usuario1.isArticulo1EnVenta()) {
+                                            System.out.println("Tus Articulos en venta son: ");
+                                            System.out.println("============================");
+                                            System.out.println(usuario1.getArticulo1());
+                                        }
 
-                                    if (usuario2.isArticulo2Vendido()) {
-                                        System.out.println("Tus Articulos en venta son: ");
-                                        System.out.println("============================");
-                                        System.out.println(usuario2.getArticulo2());
-                                        estaEnVenta = true;
+                                        if (usuario1.isArticulo2EnVenta()) {
+                                            System.out.println("Tus Articulos en venta son: ");
+                                            System.out.println("============================");
+                                            System.out.println(usuario1.getArticulo2());
+                                        }
                                     }
-
-                                    if (!estaEnVenta) {
-                                        System.out.println("No tienes ningún artículo en venta!");
-                                    }
-                                } else if (usuario1.getCompra() != null){// Comprueba si el articulo ha sido comprado.
-                                    System.out.println("De momento no tienes más articulos en venta.");
+                                } else {
+                                    System.out.println("No hay artículos en venta");
                                 }
                             }
 
@@ -223,7 +219,7 @@ public class main {
                             //Cerrar venta o quitar
                             if (usuario1Logeado) {
                                 //Comprueba si cualquiera de los dos articulos se han vendido.
-                                if (usuario1.isArticulo1Vendido() || usuario1.isArticulo2Vendido()) {
+                                if (usuario1.isArticulo1EnVenta() || usuario1.isArticulo2EnVenta()) {
                                     //menu que operacion desea hacer
                                     System.out.println("Cerrar la venta de un producto o quitarlo de la venta");
                                     System.out.println("1. Cerrar Venta");
@@ -237,7 +233,7 @@ public class main {
                                                 // Si la compra del usuario esta vacia se realiza el cierre de venta.
                                                 if (usuario2.getCompra() == null) {
                                                     //Mostrara el articulo que haya sido puesto en venta.
-                                                    if (usuario1.isArticulo1Vendido()) {
+                                                    if (usuario1.isArticulo1EnVenta()) {
                                                         System.out.println("El artículo en venta es:");
                                                         System.out.println(usuario1.getArticulo1());
 
@@ -255,12 +251,15 @@ public class main {
                                                             //COMPRA AL USUARIO usuario1 (usuario vendedor) -> tu estas vendiendo tu artículo
                                                             Compra comprandoArticulo = new Compra(articuloAVender, articuloAVender.getPrecio(), usuario1.mostrarFecha(), usuario1);
                                                             usuario2.setCompra(comprandoArticulo);
+                                                            //Colocamos el artículo como comprado.
+                                                            articuloComprado = true;
+
                                                         } else {
                                                             System.out.println("Nos has vendido ningún artículo");
                                                         }
                                                     }
 
-                                                    if (usuario1.isArticulo2Vendido()) {
+                                                    if (usuario1.isArticulo2EnVenta()) {
                                                         System.out.println("El artículo en venta es:");
                                                         System.out.println(usuario1.getArticulo2());
 
@@ -279,6 +278,9 @@ public class main {
                                                             //COMPRA AL USUARIO:  usuario1 (usuario vendedor) -> tu estas vendiendo tu artículo
                                                             Compra comprandoArticulo = new Compra(articuloAVender, articuloAVender.getPrecio(), usuario1.mostrarFecha(), usuario1);
                                                             usuario2.setCompra(comprandoArticulo);
+                                                            //Colocamos el artículo como comprado.
+                                                            articuloComprado = true;
+
                                                         } else {
                                                             System.out.println("Nos has vendido ningún artículo");
                                                         }
@@ -295,9 +297,9 @@ public class main {
                                         case 2:
                                             //Quitara el articulo que este puesto en venta.
                                             System.out.println("Quitar articulo");
-                                            if (usuario1.isArticulo1Vendido()) {
+                                            if (usuario1.isArticulo1EnVenta()) {
                                                 System.out.println(usuario1.getArticulo1());
-                                                usuario1.setArticulo1Vendido(false);
+                                                usuario1.setArticulo1EnVenta(false);
                                                 System.out.print("Quitando articulo ");
                                                 for (int i = 0; i < 3; i++) {
                                                     System.out.print(".");
@@ -306,9 +308,9 @@ public class main {
 
                                             }
 
-                                            if (usuario1.isArticulo2Vendido()) {
+                                            if (usuario1.isArticulo2EnVenta()) {
                                                 System.out.println(usuario1.getArticulo2());
-                                                usuario1.setArticulo2Vendido(false);
+                                                usuario1.setArticulo2EnVenta(false);
                                                 System.out.print("Quitando articulo ");
                                                 for (int i = 0; i < 3; i++) {
                                                     System.out.print(".");
@@ -328,7 +330,7 @@ public class main {
                             } else if (usuario2Logeado) {
 
                                 //Comprueba si cualquiera de los dos articulos se han vendido.
-                                if (usuario2.isArticulo1Vendido() || usuario2.isArticulo2Vendido()) {
+                                if (usuario2.isArticulo1EnVenta() || usuario2.isArticulo2EnVenta()) {
                                     System.out.println("Cerrar la venta de un producto o quitarlo de la venta");
                                     System.out.println("1. Cerrar Venta");
                                     System.out.println("2. Quitar Venta");
@@ -341,7 +343,7 @@ public class main {
                                                 //Si la compra del usuario esta vacia se realiza el cierre de venta.
                                                 if (usuario1.getCompra() == null) {
                                                     //Mostrara los articulos que se hayan puesto en venta.
-                                                    if (usuario2.isArticulo1Vendido()) {
+                                                    if (usuario2.isArticulo1EnVenta()) {
                                                         System.out.println("El artículo en venta es:");
                                                         System.out.println(usuario2.getArticulo1());
 
@@ -359,12 +361,15 @@ public class main {
                                                             //COMPRA AL USUARIO:  usuario1 (usuario vendedor) -> tu estas vendiendo tu artículo
                                                             Compra comprandoArticulo = new Compra(articuloAVender, articuloAVender.getPrecio(), usuario2.mostrarFecha(), usuario2);
                                                             usuario1.setCompra(comprandoArticulo);
+                                                            //Colocamos el artículo como comprado.
+                                                            articuloComprado = true;
+
                                                         } else {
                                                             System.out.println("Nos vemos pronto");
                                                         }
                                                     }
 
-                                                    if (usuario2.isArticulo2Vendido()) {
+                                                    if (usuario2.isArticulo2EnVenta()) {
                                                         System.out.println("El artículo en venta es:");
                                                         System.out.println(usuario2.getArticulo2());
 
@@ -382,6 +387,9 @@ public class main {
                                                             //COMPRA AL USUARIO:  usuario1 (usuario vendedor) -> tu estas vendiendo tu artículo
                                                             Compra comprandoArticulo = new Compra(articuloAVender, articuloAVender.getPrecio(), usuario2.mostrarFecha(), usuario2);
                                                             usuario1.setCompra(comprandoArticulo);
+                                                            //Colocamos el artículo como comprado.
+                                                            articuloComprado = true;
+
                                                         } else {
                                                             System.out.println("Nos vemos pronto");
                                                         }
@@ -397,9 +405,9 @@ public class main {
                                         case 2:
                                             //Quitara el articulo que se haya puesto en venta.
                                             System.out.println("Quitar articulo");
-                                            if (usuario2.isArticulo1Vendido()) {
+                                            if (usuario2.isArticulo1EnVenta()) {
                                                 System.out.println(usuario2.getArticulo1());
-                                                usuario2.setArticulo1Vendido(false);
+                                                usuario2.setArticulo1EnVenta(false);
                                                 System.out.print("Quitando articulo ");
                                                 for (int i = 0; i < 3; i++) {
                                                     System.out.print(".");
@@ -408,9 +416,9 @@ public class main {
 
                                             }
 
-                                            if (usuario2.isArticulo2Vendido()) {
+                                            if (usuario2.isArticulo2EnVenta()) {
                                                 System.out.println(usuario2.getArticulo2());
-                                                usuario2.setArticulo2Vendido(false);
+                                                usuario2.setArticulo2EnVenta(false);
                                                 System.out.print("Quitando articulo ");
                                                 for (int i = 0; i < 3; i++) {
                                                     System.out.print(".");
@@ -445,17 +453,17 @@ public class main {
                                 System.out.println("¿Que articulo vas a vender?");
                                 escogerArticulo = Integer.parseInt(s.nextLine());
 
-                                if (!usuario1.isArticulo1Vendido() && !usuario1.isArticulo2Vendido()) {//comprueba si el articulo esta vendido.
+                                if (!usuario1.isArticulo1EnVenta() && !usuario1.isArticulo2EnVenta()) {//comprueba si el articulo esta en venta.
                                     //Seleccionar los articulos que quiera vender.
                                     if (escogerArticulo == 1) {
                                         Venta ventaUsuario1 = new Venta(usuario1.getArticulo1(), usuario1.getArticulo1().getPrecio(), "Venta de prueba", usuario1.mostrarFecha(), usuario2);
                                         usuario1.setVenta(ventaUsuario1);
-                                        usuario1.setArticulo1Vendido(true);
+                                        usuario1.setArticulo1EnVenta(true);
 
                                     } else if (escogerArticulo == 2) {
                                         Venta ventaUsuario1 = new Venta(usuario1.getArticulo2(), usuario1.getArticulo2().getPrecio(), "Venta en buen estado", usuario1.mostrarFecha(), usuario2);
                                         usuario1.setVenta(ventaUsuario1);
-                                        usuario1.setArticulo2Vendido(true);
+                                        usuario1.setArticulo2EnVenta(true);
 
                                     } else System.out.println("Nos has escogido ninguna opcion");
 
@@ -476,17 +484,17 @@ public class main {
                                 System.out.println("¿Que articulo vas a vender?");
                                 escogerArticulo = Integer.parseInt(s.nextLine());
 
-                                if (!usuario2.isArticulo1Vendido() && !usuario2.isArticulo2Vendido()) {//comprueba si el articulo esta vendido.
+                                if (!usuario2.isArticulo1EnVenta() && !usuario2.isArticulo2EnVenta()) {//comprueba si el articulo esta en venta.
                                     //Seleccionar los articulos que quiera vender.
                                     if (escogerArticulo == 1) {
                                         Venta ventaUsuario2 = new Venta(usuario2.getArticulo1(), usuario2.getArticulo1().getPrecio(), "Producto al alacanze de tu bolsillo", usuario2.mostrarFecha(), usuario1);
                                         usuario2.setVenta(ventaUsuario2);
-                                        usuario2.setArticulo1Vendido(true);
+                                        usuario2.setArticulo1EnVenta(true);
 
                                     } else if (escogerArticulo == 2) {
                                         Venta ventaUsuario2 = new Venta(usuario2.getArticulo2(), usuario2.getArticulo2().getPrecio(), "Disponible en todos lo modelos", usuario2.mostrarFecha(), usuario1);
                                         usuario2.setVenta(ventaUsuario2);
-                                        usuario2.setArticulo2Vendido(true);
+                                        usuario2.setArticulo2EnVenta(true);
 
                                     } else System.out.println("Nos has escogido ninguna opcion");
 
@@ -495,7 +503,31 @@ public class main {
 
                             break;
                         case 6:
-                            System.out.println("Sin hacerse");
+                                //Si el usuario ha puesto en venta un articulo se muestra.
+                                if(usuario1.getVenta() != null) {
+                                    System.out.println("Articulos en venta: ");
+                                    if (usuario1.isArticulo1EnVenta()) {
+                                        System.out.println(usuario1.getArticulo1());
+                                    } else if (usuario1.isArticulo2EnVenta()) {
+                                        System.out.println(usuario1.getArticulo2());
+                                    }
+                                } else {
+                                    System.out.println("De momento no se encuentran ningún artículo en venta");
+                                }
+
+                                //Compruebo si el usuario 2 esta registrado.
+                                if (usuario2 != null) {
+                                    //Si el usuario ha puesto en venta un articulo lo muestra.
+                                    if (usuario2.getVenta() != null) {
+                                        if (usuario2.isArticulo1EnVenta()) {
+                                            System.out.println(usuario2.getArticulo1());
+                                        } else if (usuario2.isArticulo2EnVenta()) {
+                                            System.out.println(usuario2.getArticulo2());
+                                        }
+                                    }
+                                }
+
+
                             break;
                         case 7:
                             if (usuario1Logeado) {
@@ -543,7 +575,7 @@ public class main {
                             if (usuario1Logeado) {
                                 boolean comprado = false;
 
-                                //Comprobar si he comprado algo
+                                //Comprobar si he comprado algo.
                                 if (usuario1.getCompra() != null) {
                                     if (usuario1.getCompra().getComentario() == null && usuario1.getCompra().getPuntuacion() == 0) {
                                         System.out.println("Historico de compras");

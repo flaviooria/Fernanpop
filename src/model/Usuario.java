@@ -23,8 +23,8 @@ public class Usuario {
     private Articulo articulo2;
     private Compra compra;
     private Venta venta;
-    private boolean articulo1Vendido;
-    private boolean articulo2Vendido;
+    private boolean articulo1EnVenta;
+    private boolean articulo2EnVenta;
     private String fechaActual;
 
 
@@ -33,8 +33,8 @@ public class Usuario {
         this.correo = email;
         this.contrasenia = contrasenia;
         this.nombre = nombre;
-        this.articulo1Vendido = false;
-        this.articulo2Vendido = false;
+        this.articulo1EnVenta = false;
+        this.articulo2EnVenta = false;
         this.articulo1 = articulo1;
         this.articulo2 = articulo2;
     }
@@ -137,20 +137,20 @@ public class Usuario {
         this.articulo2 = articulo2;
     }
 
-    public boolean isArticulo1Vendido() {
-        return articulo1Vendido;
+    public boolean isArticulo1EnVenta() {
+        return articulo1EnVenta;
     }
 
-    public void setArticulo1Vendido(boolean articulo1Vendido) {
-        this.articulo1Vendido = articulo1Vendido;
+    public void setArticulo1EnVenta(boolean articulo1EnVenta) {
+        this.articulo1EnVenta = articulo1EnVenta;
     }
 
-    public boolean isArticulo2Vendido() {
-        return articulo2Vendido;
+    public boolean isArticulo2EnVenta() {
+        return articulo2EnVenta;
     }
 
-    public void setArticulo2Vendido(boolean articulo2Vendido) {
-        this.articulo2Vendido = articulo2Vendido;
+    public void setArticulo2EnVenta(boolean articulo2EnVenta) {
+        this.articulo2EnVenta = articulo2EnVenta;
     }
 
     public String getFechaActual() {
