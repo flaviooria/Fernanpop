@@ -114,18 +114,18 @@ public class main {
             //MENÚ
             if (logeado) {
                 do {
-                    System.out.println("| **************************************");
-                    System.out.println("|               Menú Usuario            ");
-                    System.out.println("|   1.  Mostrar mi perfil de usuario");
-                    System.out.println("|   2.  Cambiar mis datos personales");
-                    System.out.println("|   3.  Ver mis productos en venta");
-                    System.out.println("|   4.  Cerrar la venta de un producto o quitarlo de la venta");
-                    System.out.println("|   5.  Poner en venta un producto");
-                    System.out.println("|   6.  Ver todos los productos en venta de la aplicación");
-                    System.out.println("|   7.  Ver mi historico de ventas");
-                    System.out.println("|   8.  Ver mi historico de compras");
-                    System.out.println("|   9.  Cerrar sesión");
-                    System.out.println("| **************************************");
+                    System.out.println("| ********************************************************************** |");
+                    System.out.println("|                   Menú                                                 |");
+                    System.out.println("|    1.  Mostrar mi perfil de usuario                                    |");
+                    System.out.println("|    2.  Cambiar mis datos personales                                    |");
+                    System.out.println("|    3.  Ver mis productos en venta                                      |");
+                    System.out.println("|    4.  Cerrar la venta de un producto o quitarlo de la venta           |");
+                    System.out.println("|    5.  Poner en venta un producto                                      |");
+                    System.out.println("|    6.  Ver todos los productos en venta de la aplicación               |");
+                    System.out.println("|    7.  Ver mi historico de ventas                                      |");
+                    System.out.println("|    8.  Ver mi historico de compras                                     |");
+                    System.out.println("|    9.  Cerrar sesión                                                   |");
+                    System.out.println("| ********************************************************************** |");
 
                     opcion = Integer.parseInt(s.nextLine());
                     System.out.println();
@@ -142,43 +142,109 @@ public class main {
                             break;
                         case 2:// editar datos
                             if (usuario1Logeado) {
-                                System.out.println("Editar datos personales");
-                                System.out.println("Nombre completo:");
-                                usuario1.setNombre(s.nextLine());
+                                int editarDato;
 
-                                do {// validación de correo
-                                    System.out.println("Correo electronico:");
-                                    usuario1.setCorreo(s.nextLine());
-                                    if (!Usuario.validarCorreo(usuario1.getCorreo()))
-                                        System.out.println("Correo no valido, vuelve a introducir");
-                                } while (!Usuario.validarCorreo(usuario1.getCorreo()));
+                                System.out.println("| ********************************************** |");
+                                System.out.println("|    - Elige el dato que deseas cambiar.         |");
+                                System.out.println("|    1.  Nombre                                  |");
+                                System.out.println("|    2.  Correo Electronico                      |");
+                                System.out.println("|    3.  Contraseña                              |");
+                                System.out.println("|    4.  Edad                                    |");
+                                System.out.println("|    5.  Móvil                                   |");
+                                System.out.println("|    6.  Direccion                               |");
+                                System.out.println("| ********************************************** |");
+                                editarDato = Integer.parseInt(s.nextLine());
 
-                                System.out.println("Edad:");
-                                usuario1.setEdad(23);
-                                System.out.println("Móvil:");
-                                usuario1.setMovil(1313123);
-                                System.out.println("Dirección: ");
-                                usuario1.setDirrecion("romero 7 martos");
+                                switch (editarDato) {
+                                    case 1:
+                                        System.out.println("Nombre completo:");
+                                        usuario1.setNombre(s.nextLine());
+                                        break;
+                                    case 2:
+                                        do {// validación de correo
+                                        System.out.println("Correo electronico:");
+                                        usuario1.setCorreo(s.nextLine());
+                                        if (!Usuario.validarCorreo(usuario1.getCorreo()))
+                                            System.out.println("Correo no valido, vuelve a introducir");
+                                    } while (!Usuario.validarCorreo(usuario1.getCorreo()));
+                                        break;
+                                    case 3:
+                                        do {//validacion de contraseña
+                                            System.out.println("Cambiar contraseña");
+                                            usuario1.setContrasenia(s.nextLine());
+                                            if (!Usuario.validarContrasenia(usuario1.getContrasenia()) ||usuario1.getContrasenia().isEmpty())
+                                                System.out.println("La contraseña debe ser mayor de 4 digitos y menor de 16.");
+                                        } while (!Usuario.validarContrasenia(usuario1.getContrasenia()) ||usuario1.getContrasenia().isEmpty());
+                                        break;
+                                    case 4:
+                                        System.out.println("Edad:");
+                                        usuario1.setEdad(23);
+                                        break;
+                                    case 5:
+                                        System.out.println("Móvil:");
+                                        usuario1.setMovil(1313123);
+                                        break;
+                                    case 6:
+                                        System.out.println("Dirección: ");
+                                        usuario1.setDirrecion("romero 7 martos");
+                                        break;
+                                    default:
+                                        System.out.println("No has editado ningún dato");
+                                }
                                 System.out.println();
+
                             } else if (usuario2Logeado) {
-                                System.out.println("Editar datos personales");
-                                System.out.println("Nombre completo:");
-                                usuario2.setNombre(s.nextLine());
+                                int editarDato;
 
-                                do { //validación de correo
-                                    System.out.println("Correo electronico:");
-                                    usuario2.setCorreo(s.nextLine());
-                                    if (!Usuario.validarCorreo(usuario2.getCorreo()))
-                                        System.out.println("Correo no valido, vuelve a introducir");
-                                } while (!Usuario.validarCorreo(usuario2.getCorreo()));
+                                System.out.println("| ********************************************** |");
+                                System.out.println("|    - Elige el dato que deseas cambiar.         |");
+                                System.out.println("|    1.  Nombre                                  |");
+                                System.out.println("|    2.  Correo Electronico                      |");
+                                System.out.println("|    3.  Contraseña                              |");
+                                System.out.println("|    4.  Edad                                    |");
+                                System.out.println("|    5.  Móvil                                   |");
+                                System.out.println("|    6.  Direccion                               |");
+                                System.out.println("| ********************************************** |");
+                                editarDato = Integer.parseInt(s.nextLine());
 
-                                System.out.println("Edad:");
-                                usuario2.setEdad(23);
-                                System.out.println("Móvil:");
-                                usuario2.setMovil(1313123);
-                                System.out.println("Dirección: ");
-                                usuario2.setDirrecion("romero 7 martos");
+                                switch (editarDato) {
+                                    case 1:
+                                        System.out.println("Nombre completo:");
+                                        usuario2.setNombre(s.nextLine());
+                                        break;
+                                    case 2:
+                                        do {// validación de correo
+                                            System.out.println("Correo electronico:");
+                                            usuario2.setCorreo(s.nextLine());
+                                            if (!Usuario.validarCorreo(usuario2.getCorreo()))
+                                                System.out.println("Correo no valido, vuelve a introducir");
+                                        } while (!Usuario.validarCorreo(usuario2.getCorreo()));
+                                        break;
+                                    case 3:
+                                        do {//validacion de contraseña
+                                            System.out.println("Cambiar contraseña");
+                                            usuario2.setContrasenia(s.nextLine());
+                                            if (!Usuario.validarContrasenia(usuario2.getContrasenia()) ||usuario2.getContrasenia().isEmpty())
+                                                System.out.println("La contraseña debe ser mayor de 4 digitos y menor de 16.");
+                                        } while (!Usuario.validarContrasenia(usuario2.getContrasenia()) ||usuario2.getContrasenia().isEmpty());
+                                        break;
+                                    case 4:
+                                        System.out.println("Edad:");
+                                        usuario2.setEdad(23);
+                                        break;
+                                    case 5:
+                                        System.out.println("Móvil:");
+                                        usuario2.setMovil(1313123);
+                                        break;
+                                    case 6:
+                                        System.out.println("Dirección: ");
+                                        usuario2.setDirrecion("romero 7 martos");
+                                        break;
+                                    default:
+                                        System.out.println("No has editado ningún dato");
+                                }
                                 System.out.println();
+
                             }
 
                             break;
