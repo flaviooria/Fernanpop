@@ -51,7 +51,9 @@ public class Compra {
     }
 
     public void setPuntuacion(float puntuacion) {
-        this.puntuacion = puntuacion;
+        if (puntuacion > 0 && puntuacion < 5)
+            this.puntuacion = puntuacion;
+        else this.puntuacion = 0;
     }
 
     public String getComentario() {

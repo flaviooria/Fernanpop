@@ -47,20 +47,27 @@ public class main {
 
                         //Validaciones
                         if (!Usuario.validarCorreo(correo)) System.out.println("Correo incorrecto, vuelve a introducir por favor");
-                        if (!Usuario.validarContrasenia(contrasenia)) System.out.println("La contraseña debe ser mayor de 4 digitos y menor de 16.");
+                        if (!Usuario.validarContrasenia(contrasenia)) System.out.println("La contraseña debe ser mayor de 4 dígitos y menor de 16.");
                         if (nombre.isEmpty() || contrasenia.isEmpty()) System.out.println("Ha ocurrido un error, por favor rellena los campos correctamente.\n");
 
+                        System.out.print("Registrando cuenta ");
+                        for (int i = 0; i < 3; i++) {
+                            System.out.print(".");
+                            TimeUnit.SECONDS.sleep(1);
+                        }
+                        System.out.println();
+                        System.out.println();
                     } while (!Usuario.validarCorreo(correo) || nombre.isEmpty() || contrasenia.isEmpty() || !Usuario.validarContrasenia(contrasenia));
 
                     //COMPROBAR USUARIO ESTA REGISTRADO
                     if (usuario1 == null) {
-                        Articulo articulo1 = new Articulo(1, "Xiami Redmi Note 10", "Movil en buen estado, 128ssd  y 6gb.", 400, 1);
-                        Articulo articulo2 = new Articulo(2, "MacBook Pro 13 principios del 2019", "Portatil casi nuevo,16gb de ram y 256ssd", 5000, 1);
+                        Articulo articulo1 = new Articulo( "Xiami Redmi Note 10", "Movil en buen estado, 128ssd  y 6gb.", 400, 1);
+                        Articulo articulo2 = new Articulo("MacBook Pro 13 principios del 2019", "Portatil casi nuevo,16gb de ram y 256ssd", 5000, 1);
 
                         usuario1 = new Usuario(correo, contrasenia, nombre, articulo1, articulo2);
                     } else if (usuario2 == null) {
-                        Articulo articulo1 = new Articulo(1, "SMART TV LG 42' pulgadas ", "Televisor smart tv, incluye 3 puertos hdmi, full hd", 600, 1);
-                        Articulo articulo2 = new Articulo(2, "Google Chromecast", "Chromecast", 50, 1);
+                        Articulo articulo1 = new Articulo("SMART TV LG 42' pulgadas ", "Televisor smart tv, incluye 3 puertos hdmi, full hd", 600, 1);
+                        Articulo articulo2 = new Articulo("Google Chromecast", "Chromecast", 50, 1);
 
                         usuario2 = new Usuario(correo, contrasenia, nombre, articulo1, articulo2);
 
@@ -78,6 +85,11 @@ public class main {
                         correo = s.nextLine();
                         System.out.print("Introduce tú contraseña: ");
                         contrasenia = s.nextLine();
+                        System.out.print("Iniciando Sesión ");
+                        for (int i = 0; i < 3; i++) {
+                            System.out.print(".");
+                            TimeUnit.SECONDS.sleep(1);
+                        }
                         System.out.println();
 
                         //Comprueba si el correo y contraseña son validos.
@@ -106,6 +118,12 @@ public class main {
 
                     break;
                 case 3:
+                    System.out.print("Saliendo ");
+                    for (int i = 0; i < 3; i++) {
+                        System.out.print(".");
+                        TimeUnit.SECONDS.sleep(1);
+                    }
+                    System.out.println();
                     salir = true;
                     break;
                 default:
@@ -133,9 +151,21 @@ public class main {
                     switch (opcion) {
                         case 1: //perfil usuario
                             if (usuario1Logeado) {
+                                System.out.print("Cargando ");
+                                for (int i = 0; i < 2; i++) {
+                                    System.out.print(".");
+                                    TimeUnit.SECONDS.sleep(1);
+                                }
+                                System.out.println();
                                 System.out.println(usuario1);
                                 System.out.println();
                             } else if (usuario2Logeado) {
+                                System.out.print("Cargando ");
+                                for (int i = 0; i < 2; i++) {
+                                    System.out.print(".");
+                                    TimeUnit.SECONDS.sleep(1);
+                                }
+                                System.out.println();
                                 System.out.println(usuario2);
                                 System.out.println();
                             }
@@ -143,6 +173,12 @@ public class main {
                         case 2:// editar datos
                             if (usuario1Logeado) {
                                 int editarDato;
+                                System.out.print("Cargando ");
+                                for (int i = 0; i < 2; i++) {
+                                    System.out.print(".");
+                                    TimeUnit.SECONDS.sleep(1);
+                                }
+                                System.out.println();
 
                                 System.out.println("| ********************************************** |");
                                 System.out.println("|    - Elige el dato que deseas cambiar.         |");
@@ -159,11 +195,23 @@ public class main {
                                     case 1:
                                         System.out.println("Nombre completo:");
                                         usuario1.setNombre(s.nextLine());
+                                        System.out.print("Realizando cambio ");
+                                        for (int i = 0; i < 1; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         break;
                                     case 2:
                                         do {// validación de correo
                                         System.out.println("Correo electronico:");
                                         usuario1.setCorreo(s.nextLine());
+                                            System.out.print("Realizando cambio ");
+                                            for (int i = 0; i < 1; i++) {
+                                                System.out.print(".");
+                                                TimeUnit.SECONDS.sleep(1);
+                                            }
+                                            System.out.println();
                                         if (!Usuario.validarCorreo(usuario1.getCorreo()))
                                             System.out.println("Correo no valido, vuelve a introducir");
                                     } while (!Usuario.validarCorreo(usuario1.getCorreo()));
@@ -172,6 +220,12 @@ public class main {
                                         do {//validacion de contraseña
                                             System.out.println("Cambiar contraseña");
                                             usuario1.setContrasenia(s.nextLine());
+                                            System.out.print("Realizando cambio ");
+                                            for (int i = 0; i < 1; i++) {
+                                                System.out.print(".");
+                                                TimeUnit.SECONDS.sleep(1);
+                                            }
+                                            System.out.println();
                                             if (!Usuario.validarContrasenia(usuario1.getContrasenia()) ||usuario1.getContrasenia().isEmpty())
                                                 System.out.println("La contraseña debe ser mayor de 4 digitos y menor de 16.");
                                         } while (!Usuario.validarContrasenia(usuario1.getContrasenia()) ||usuario1.getContrasenia().isEmpty());
@@ -179,14 +233,32 @@ public class main {
                                     case 4:
                                         System.out.println("Edad:");
                                         usuario1.setEdad(23);
+                                        System.out.print("Realizando cambio ");
+                                        for (int i = 0; i < 1; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         break;
                                     case 5:
                                         System.out.println("Móvil:");
                                         usuario1.setMovil(1313123);
+                                        System.out.print("Realizando cambio ");
+                                        for (int i = 0; i < 1; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         break;
                                     case 6:
                                         System.out.println("Dirección: ");
                                         usuario1.setDirrecion("romero 7 martos");
+                                        System.out.print("Realizando cambio ");
+                                        for (int i = 0; i < 1; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         break;
                                     default:
                                         System.out.println("No has editado ningún dato");
@@ -211,11 +283,23 @@ public class main {
                                     case 1:
                                         System.out.println("Nombre completo:");
                                         usuario2.setNombre(s.nextLine());
+                                        System.out.print("Realizando cambio ");
+                                        for (int i = 0; i < 1; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         break;
                                     case 2:
                                         do {// validación de correo
                                             System.out.println("Correo electronico:");
                                             usuario2.setCorreo(s.nextLine());
+                                            System.out.print("Realizando cambio ");
+                                            for (int i = 0; i < 1; i++) {
+                                                System.out.print(".");
+                                                TimeUnit.SECONDS.sleep(1);
+                                            }
+                                            System.out.println();
                                             if (!Usuario.validarCorreo(usuario2.getCorreo()))
                                                 System.out.println("Correo no valido, vuelve a introducir");
                                         } while (!Usuario.validarCorreo(usuario2.getCorreo()));
@@ -224,6 +308,12 @@ public class main {
                                         do {//validacion de contraseña
                                             System.out.println("Cambiar contraseña");
                                             usuario2.setContrasenia(s.nextLine());
+                                            System.out.print("Realizando cambio ");
+                                            for (int i = 0; i < 1; i++) {
+                                                System.out.print(".");
+                                                TimeUnit.SECONDS.sleep(1);
+                                            }
+                                            System.out.println();
                                             if (!Usuario.validarContrasenia(usuario2.getContrasenia()) ||usuario2.getContrasenia().isEmpty())
                                                 System.out.println("La contraseña debe ser mayor de 4 digitos y menor de 16.");
                                         } while (!Usuario.validarContrasenia(usuario2.getContrasenia()) ||usuario2.getContrasenia().isEmpty());
@@ -231,14 +321,32 @@ public class main {
                                     case 4:
                                         System.out.println("Edad:");
                                         usuario2.setEdad(23);
+                                        System.out.print("Realizando cambio ");
+                                        for (int i = 0; i < 1; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         break;
                                     case 5:
                                         System.out.println("Móvil:");
                                         usuario2.setMovil(1313123);
+                                        System.out.print("Realizando cambio ");
+                                        for (int i = 0; i < 1; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         break;
                                     case 6:
                                         System.out.println("Dirección: ");
                                         usuario2.setDirrecion("romero 7 martos");
+                                        System.out.print("Realizando cambio ");
+                                        for (int i = 0; i < 1; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         break;
                                     default:
                                         System.out.println("No has editado ningún dato");
@@ -258,6 +366,12 @@ public class main {
                                         System.out.println("Tus artículos ya no estan en venta");
                                     } else {
                                         if (usuario1.isArticulo1EnVenta()) {
+                                            System.out.print("Carganado artículos ");
+                                            for (int i = 0; i < 3; i++) {
+                                                System.out.print(".");
+                                                TimeUnit.SECONDS.sleep(1);
+                                            }
+                                            System.out.println();
                                             System.out.println("Tus Artículos en venta son: ");
                                             System.out.println("============================");
                                             System.out.println(usuario1.getArticulo1());
@@ -265,6 +379,12 @@ public class main {
                                         }
 
                                         if (usuario1.isArticulo2EnVenta()) {
+                                            System.out.print("Carganado artículos ");
+                                            for (int i = 0; i < 3; i++) {
+                                                System.out.print(".");
+                                                TimeUnit.SECONDS.sleep(1);
+                                            }
+                                            System.out.println();
                                             System.out.println("Tus Artículos en venta son: ");
                                             System.out.println("============================");
                                             System.out.println(usuario1.getArticulo2());
@@ -283,6 +403,12 @@ public class main {
                                         System.out.println("Tus artículos ya no estan en venta");
                                     } else {
                                         if (usuario2.isArticulo1EnVenta()) {
+                                            System.out.print("Carganado artículos ");
+                                            for (int i = 0; i < 3; i++) {
+                                                System.out.print(".");
+                                                TimeUnit.SECONDS.sleep(1);
+                                            }
+                                            System.out.println();
                                             System.out.println("Tus Artículos en venta son: ");
                                             System.out.println("============================");
                                             System.out.println(usuario2.getArticulo1());
@@ -290,6 +416,12 @@ public class main {
                                         }
 
                                         if (usuario2.isArticulo2EnVenta()) {
+                                            System.out.print("Carganado artículos ");
+                                            for (int i = 0; i < 3; i++) {
+                                                System.out.print(".");
+                                                TimeUnit.SECONDS.sleep(1);
+                                            }
+                                            System.out.println();
                                             System.out.println("Tus Artículos en venta son: ");
                                             System.out.println("============================");
                                             System.out.println(usuario2.getArticulo2());
@@ -345,6 +477,12 @@ public class main {
                                                             usuario2.setCompra(comprandoArticulo);
                                                             //Colocamos el artículo como comprado.
                                                             articuloComprado1 = true;
+                                                            System.out.print("Procesando compra ");
+                                                            for (int i = 0; i < 3; i++) {
+                                                                System.out.print(".");
+                                                                TimeUnit.SECONDS.sleep(1);
+                                                            }
+                                                            System.out.println();
 
                                                         } else {
                                                             System.out.println("No has vendido ningún artículo.\n");
@@ -374,6 +512,12 @@ public class main {
                                                             usuario2.setCompra(comprandoArticulo);
                                                             //Colocamos el artículo como comprado.
                                                             articuloComprado1 = true;
+                                                            System.out.print("Procesando compra ");
+                                                            for (int i = 0; i < 3; i++) {
+                                                                System.out.print(".");
+                                                                TimeUnit.SECONDS.sleep(1);
+                                                            }
+                                                            System.out.println();
 
                                                         } else {
                                                             System.out.println("Nos has vendido ningún artículo.\n");
@@ -463,6 +607,12 @@ public class main {
                                                             usuario1.setCompra(comprandoArticulo);
                                                             //Colocamos el artículo como comprado.
                                                             articuloComprado2 = true;
+                                                            System.out.print("Procesando compra ");
+                                                            for (int i = 0; i < 3; i++) {
+                                                                System.out.print(".");
+                                                                TimeUnit.SECONDS.sleep(1);
+                                                            }
+                                                            System.out.println();
 
                                                         } else {
                                                             System.out.println("No has vendido ningún artículo.\n");
@@ -492,6 +642,12 @@ public class main {
                                                             usuario1.setCompra(comprandoArticulo);
                                                             //Colocamos el artículo como comprado.
                                                             articuloComprado2 = true;
+                                                            System.out.print("Procesando compra ");
+                                                            for (int i = 0; i < 3; i++) {
+                                                                System.out.print(".");
+                                                                TimeUnit.SECONDS.sleep(1);
+                                                            }
+                                                            System.out.println();
 
                                                         } else {
                                                             System.out.println("Nos has vendido ningún artículo.\n");
@@ -516,9 +672,8 @@ public class main {
                                                 for (int i = 0; i < 3; i++) {
                                                     System.out.print(".");
                                                     TimeUnit.SECONDS.sleep(1);
-                                                    System.out.println();
                                                 }
-
+                                                System.out.println();
                                             }
 
                                             if (usuario2.isArticulo2EnVenta()) {
@@ -529,8 +684,8 @@ public class main {
                                                 for (int i = 0; i < 3; i++) {
                                                     System.out.print(".");
                                                     TimeUnit.SECONDS.sleep(1);
-                                                    System.out.println();
                                                 }
+                                                System.out.println();
                                             }
                                             break;
                                         default:
@@ -547,6 +702,9 @@ public class main {
                             if (usuario1Logeado) {
 
                                 //Mostrar los articulos al usuario
+                                System.out.print("Cargando artículos: ");
+                                Thread.sleep(1000);
+                                System.out.println();
                                 System.out.println("Tus Artículos: ");
                                 System.out.println("Pon en venta un artículo. Selecciona que artículo, 1 o 2: ");
                                 System.out.println("====================================");
@@ -565,11 +723,23 @@ public class main {
                                         Venta ventaUsuario1 = new Venta(usuario1.getArticulo1(), usuario1.getArticulo1().getPrecio(), "Venta de prueba", usuario1.mostrarFecha(), usuario2);
                                         usuario1.setVenta(ventaUsuario1);
                                         usuario1.setArticulo1EnVenta(true);
+                                        System.out.print("Colocando artículo en venta ");
+                                        for (int i = 0; i < 3;i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
 
                                     } else if (escogerArticulo == 2) {
                                         Venta ventaUsuario1 = new Venta(usuario1.getArticulo2(), usuario1.getArticulo2().getPrecio(), "Venta en buen estado", usuario1.mostrarFecha(), usuario2);
                                         usuario1.setVenta(ventaUsuario1);
                                         usuario1.setArticulo2EnVenta(true);
+                                        System.out.print("Colocando artículo en venta ");
+                                        for (int i = 0; i < 3;i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
 
                                     } else System.out.println("Nos has escogido ninguna opción.\n");
 
@@ -578,6 +748,8 @@ public class main {
                             } else if (usuario2Logeado) {
 
                                 //Mostrar los articulos al usuario
+                                System.out.print("Cargando artículos: ");
+                                Thread.sleep(1000);
                                 System.out.println("Tus Artículos: ");
                                 System.out.println("Pon en venta un artículo. Selecciona que artículo, 1 o 2: ");
                                 System.out.println("====================================");
@@ -596,11 +768,23 @@ public class main {
                                         Venta ventaUsuario2 = new Venta(usuario2.getArticulo1(), usuario2.getArticulo1().getPrecio(), "Producto al alacanze de tu bolsillo", usuario2.mostrarFecha(), usuario1);
                                         usuario2.setVenta(ventaUsuario2);
                                         usuario2.setArticulo1EnVenta(true);
+                                        System.out.print("Colocando artículo en venta ");
+                                        for (int i = 0; i < 3;i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
 
                                     } else if (escogerArticulo == 2) {
                                         Venta ventaUsuario2 = new Venta(usuario2.getArticulo2(), usuario2.getArticulo2().getPrecio(), "Disponible en todos lo modelos", usuario2.mostrarFecha(), usuario1);
                                         usuario2.setVenta(ventaUsuario2);
                                         usuario2.setArticulo2EnVenta(true);
+                                        System.out.print("Colocando artículo en venta ");
+                                        for (int i = 0; i < 3;i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
 
                                     } else System.out.println("Nos has escogido ninguna opción.\n");
 
@@ -620,7 +804,12 @@ public class main {
                                 } else {
                                     System.out.println("De momento no se encuentran ningún artículo en venta");
                                 }*/
-                            System.out.println("Los Artículos en venta son: ");
+                            System.out.print("Cargando artículos ");
+                            for (int i = 0; i < 3; i++) {
+                                System.out.print(".");
+                                TimeUnit.SECONDS.sleep(1);
+                            }
+                            System.out.println();
                             System.out.println(usuario1.getArticulo1());
                             System.out.println();
                             System.out.println(usuario1.getArticulo2());
@@ -650,6 +839,12 @@ public class main {
                                     boolean enVenta = false;
                                     //Comprueba que hayas realizado un cierre de venta y hayas generado la compra al otro usuario.
                                     if (usuario1.getVenta() != null && usuario2.getCompra() != null) {
+                                        System.out.print("Cargando artículos vendidos ");
+                                        for (int i = 0; i < 3; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         System.out.println("Histórico de Ventas: ");
                                         System.out.println("El artículo vendido es: ");
                                         System.out.println(usuario1.getVenta());
@@ -670,6 +865,12 @@ public class main {
                                 boolean enVenta = false;
                                 //Comprueba que hayas realizado un cierre de venta y hayas generado la compra al otro usuario.
                                 if (usuario2.getVenta() != null && usuario1.getCompra() != null) {
+                                    System.out.print("Cargando artículos vendidos ");
+                                    for (int i = 0; i < 3; i++) {
+                                        System.out.print(".");
+                                        TimeUnit.SECONDS.sleep(1);
+                                    }
+                                    System.out.println();
                                     System.out.println("Histórico de Ventas: ");
                                     System.out.println("El artículo vendido es: ");
                                     System.out.println(usuario2.getVenta());
@@ -693,6 +894,12 @@ public class main {
                                 //Comprobar si he comprado algo.
                                 if (usuario1.getCompra() != null) {
                                     if (usuario1.getCompra().getComentario() == null && usuario1.getCompra().getPuntuacion() == 0) {
+                                        System.out.print("Cargando artículos comprados ");
+                                        for (int i = 0; i < 3; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         System.out.println("Histórico de compras");
                                         System.out.println("El artículo comprado es: ");
                                         System.out.println(usuario1.getCompra());
@@ -703,6 +910,12 @@ public class main {
                                         usuario1.getCompra().setPuntuacion(Float.parseFloat(s.nextLine()));
                                         System.out.println();
                                     } else {
+                                        System.out.print("Cargando artículos comprados ");
+                                        for (int i = 0; i < 3; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         System.out.println("Histórico de compras");
                                         System.out.println("El artículo comprado es: ");
                                         System.out.println(usuario1.getCompra());
@@ -723,6 +936,12 @@ public class main {
                                 //Comprobar si he comprado algo
                                 if (usuario2.getCompra() != null) {
                                     if (usuario2.getCompra().getComentario() == null && usuario2.getCompra().getPuntuacion() == 0) {
+                                        System.out.print("Cargando artículos comprados ");
+                                        for (int i = 0; i < 3; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         System.out.println("Histórico de compras");
                                         System.out.println("El artículo comprado es: ");
                                         System.out.println(usuario2.getCompra());
@@ -733,6 +952,12 @@ public class main {
                                         usuario2.getCompra().setPuntuacion(Float.parseFloat(s.nextLine()));
                                         System.out.println();
                                     } else {
+                                        System.out.print("Cargando artículos comprados ");
+                                        for (int i = 0; i < 3; i++) {
+                                            System.out.print(".");
+                                            TimeUnit.SECONDS.sleep(1);
+                                        }
+                                        System.out.println();
                                         System.out.println("Histórico de compras");
                                         System.out.println("El artículo comprado es: ");
                                         System.out.println(usuario2.getCompra());
@@ -750,8 +975,20 @@ public class main {
                             break;
                         case 9:
                             if (usuario1Logeado) {
+                                System.out.print("Cerrando Sesión ");
+                                for (int i = 0; i < 3; i++) {
+                                    System.out.print(".");
+                                    TimeUnit.SECONDS.sleep(1);
+                                }
+                                System.out.println();
                                 usuario1Logeado = false;
                             } else if (usuario2Logeado) {
+                                System.out.print("Cerrando Sesión ");
+                                for (int i = 0; i < 3; i++) {
+                                    System.out.print(".");
+                                    TimeUnit.SECONDS.sleep(1);
+                                }
+                                System.out.println();
                                 usuario2Logeado = false;
                             }
                             logeado = false;

@@ -13,13 +13,12 @@ public class Articulo {
 
     /**
      * Constructor
-     * @param articuloId
      * @param nombre
      * @param descrip
      * @param precio
      * @param cantidad
      */
-    public Articulo(int articuloId, String nombre, String descrip, float precio, int cantidad) {
+    public Articulo( String nombre, String descrip, float precio, int cantidad) {
         this.articuloId = articuloId;
         this.nombre = nombre;
         this.descrip = descrip;
