@@ -179,11 +179,17 @@ public class Usuario {
 
     //metodo para mostra fecha
     public String mostrarFecha () {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Calendar fechaActual =  new GregorianCalendar();
         sdf.setTimeZone(fechaActual.getTimeZone());
         return this.fechaActual = sdf.format(fechaActual.getTime());
     }
+
+    //metodo para validar contraseña
+    public static boolean validarContrasenia(String contrasenia) {
+        return contrasenia.length() > 4 &&  contrasenia.length() < 16;
+    }
+
 
     @Override
     public String toString(){
