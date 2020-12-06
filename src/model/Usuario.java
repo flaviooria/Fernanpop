@@ -94,7 +94,8 @@ public class Usuario {
     }
 
     public void setMovil(int movil) {
-        this.movil = movil;
+        if (movil > 0 && movil < 10) this.movil = movil;
+        else this.movil = 0;
     }
 
     public String getDirrecion() {
