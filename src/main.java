@@ -465,12 +465,14 @@ public class main {
                                                             String comentario;
                                                             System.out.println("Ingresa un comentario que se mostrará en tú artículo.");
                                                             comentario = s.nextLine();
-                                                            comentario = (!comentario.isEmpty() ? "Comentario agregado" : "No hubo ningún comentario");
-                                                            System.out.println();
 
                                                             //VENTA AL USUARIO usuario2 (usuario comprador) -> El usuario2 compra tu artículo
                                                             Venta vendiendoArticulo = new Venta(articuloAVender, articuloAVender.getPrecio(), comentario, usuario1.mostrarFecha(), usuario2);
                                                             usuario1.setVenta(vendiendoArticulo);
+                                                            if (usuario1.getVenta().getComentario().isEmpty())
+                                                                System.out.println("No hubo ningún comentario");
+                                                            else System.out.println("Comentario agregado");
+                                                            System.out.println();
 
                                                             //COMPRA AL USUARIO usuario1 (usuario vendedor) -> tu estas vendiendo tu artículo
                                                             Compra comprandoArticulo = new Compra(articuloAVender, articuloAVender.getPrecio(), usuario1.mostrarFecha(), usuario1);
@@ -500,12 +502,14 @@ public class main {
                                                             Articulo articuloAVender = usuario1.getArticulo2();
                                                             System.out.println("Ingresa un comentario que se mostrará en tú artículo.");
                                                             String comentario = s.nextLine();
-                                                            comentario = (!comentario.isEmpty() ? "Comentario agregado" : "No hubo ningún comentario");
-                                                            System.out.println();
 
                                                             //VENTA AL USUARIO : usuario2 (usuario comprador) -> El usuario2 compra tu artículo
                                                             Venta vendiendoArticulo = new Venta(articuloAVender, articuloAVender.getPrecio(), comentario, usuario1.mostrarFecha(), usuario2);
                                                             usuario1.setVenta(vendiendoArticulo);
+                                                            if (usuario1.getVenta().getComentario().isEmpty())
+                                                                System.out.println("No hubo ningún comentario");
+                                                            else System.out.println("Comentario agregado");
+                                                            System.out.println();
 
                                                             //COMPRA AL USUARIO:  usuario1 (usuario vendedor) -> tu estas vendiendo tu artículo
                                                             Compra comprandoArticulo = new Compra(articuloAVender, articuloAVender.getPrecio(), usuario1.mostrarFecha(), usuario1);
@@ -595,12 +599,14 @@ public class main {
                                                             Articulo articuloAVender = usuario2.getArticulo1();
                                                             System.out.println("Ingresa un comentario que se mostrara en tú artículo");
                                                             String comentario = s.nextLine();
-                                                            comentario = (!comentario.isEmpty() ? "Comentario agregado" : "No hubo ningún comentario");
-                                                            System.out.println();
 
                                                             //VENTA AL USUARIO:  usuario2 (usuario comprador) -> El usuario2 compra tu artículo
                                                             Venta vendiendoArticulo = new Venta(articuloAVender, articuloAVender.getPrecio(), comentario, usuario2.mostrarFecha(), usuario1);
                                                             usuario2.setVenta(vendiendoArticulo);
+                                                            if (usuario2.getVenta().getComentario().isEmpty())
+                                                                System.out.println("No hubo ningún comentario");
+                                                            else System.out.println("Comentario agregado");
+                                                            System.out.println();
 
                                                             //COMPRA AL USUARIO:  usuario1 (usuario vendedor) -> tu estas vendiendo tu artículo
                                                             Compra comprandoArticulo = new Compra(articuloAVender, articuloAVender.getPrecio(), usuario2.mostrarFecha(), usuario2);
@@ -630,12 +636,14 @@ public class main {
                                                             Articulo articuloAVender = usuario2.getArticulo2();
                                                             System.out.println("Ingresa un comentario que se mostrará en tú articulo");
                                                             String comentario = s.nextLine();
-                                                            comentario = (!comentario.isEmpty() ? "Comentario agregado" : "No hubo ningún comentario");
-                                                            System.out.println();
 
                                                             //VENTA AL USUARIO:  usuario2 (usuario comprador) -> El usuario2 compra tu artículo
                                                             Venta vendiendoArticulo = new Venta(articuloAVender, articuloAVender.getPrecio(), comentario, usuario2.mostrarFecha(), usuario1);
                                                             usuario2.setVenta(vendiendoArticulo);
+                                                            if (usuario2.getVenta().getComentario().isEmpty())
+                                                                System.out.println("No hubo ningún comentario");
+                                                            else System.out.println("Comentario agregado");
+                                                            System.out.println();
 
                                                             //COMPRA AL USUARIO:  usuario1 (usuario vendedor) -> tu estas vendiendo tu artículo
                                                             Compra comprandoArticulo = new Compra(articuloAVender, articuloAVender.getPrecio(), usuario2.mostrarFecha(), usuario2);
@@ -906,7 +914,8 @@ public class main {
                                         System.out.println("Gracias por tu compra, por favor añade un comentario y puntuación");
                                         System.out.println("Añade un comentario");
                                         usuario1.getCompra().setComentario(s.nextLine());
-                                        System.out.println("Añade una puntuación");
+                                        if (usuario1.getCompra().getComentario().isEmpty()) System.out.println("No has ingresado ningún comentario");
+                                        System.out.println("Añade una puntuación, solo puedes calificar de 1 al 5");
                                         usuario1.getCompra().setPuntuacion(Float.parseFloat(s.nextLine()));
                                         System.out.println();
                                     } else {
@@ -948,7 +957,8 @@ public class main {
                                         System.out.println("Gracias por tu compra, por favor añade un comentario y puntuación");
                                         System.out.println("Añade un comentario");
                                         usuario2.getCompra().setComentario(s.nextLine());
-                                        System.out.println("Añade una puntuación");
+                                        if (usuario2.getCompra().getComentario().isEmpty()) System.out.println("No has ingresado ningún comentario");
+                                        System.out.println("Añade una puntuación, solo puedes calificar de 1 al 5");
                                         usuario2.getCompra().setPuntuacion(Float.parseFloat(s.nextLine()));
                                         System.out.println();
                                     } else {
