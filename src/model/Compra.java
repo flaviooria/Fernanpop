@@ -15,6 +15,7 @@ public class Compra {
     private String comentario;
     private String fecha;
     private Usuario vendedor;
+    private int valoradoPrimeraVez;
 
     //constructor
 
@@ -51,7 +52,7 @@ public class Compra {
     }
 
     public void setPuntuacion(float puntuacion) {
-        if (puntuacion > 0 && puntuacion < 5)
+        if (puntuacion > 0 && puntuacion < 6)
             this.puntuacion = puntuacion;
         else this.puntuacion = 0;
     }
@@ -71,6 +72,14 @@ public class Compra {
 
     public void setVendedor(Usuario vendedor) {
         this.vendedor = vendedor;
+    }
+
+    public int getValoradoPrimeraVez() {
+        return valoradoPrimeraVez;
+    }
+
+    public void setValoradoPrimeraVez(int valoradoPrimeraVez) {
+        this.valoradoPrimeraVez = valoradoPrimeraVez;
     }
 
     @Override

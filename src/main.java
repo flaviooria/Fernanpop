@@ -14,6 +14,8 @@ public class main {
         boolean cerrarSesion = false;
         int opcion, opcionSesion, opcion4;
         Usuario usuario1 = null, usuario2 = null;
+        /*Articulo articulo1 = null, Articulo articulo2 = null;*/
+
         boolean usuario1Logeado = false, usuario2Logeado = false;
         String correo, contrasenia, nombre, escogerArticulo;
         boolean articuloComprado1 = false, articuloComprado2 = false, articuloBorrado1 = false, articuloBorrado2 = false;
@@ -46,14 +48,18 @@ public class main {
                         System.out.println();
 
                         //Validaciones
-                        if (nombre.isEmpty() || contrasenia.isEmpty() || !Usuario.validarContrasenia(contrasenia) || !Usuario.validarCorreo(correo))
-                            System.out.println("Ha ocurrido un error, por favor rellena los campos correctamente.\n");
+                        if (nombre.isEmpty())
+                            System.out.println("Ha ocurrido un error, por favor rellena el campo correctamente.");
+                        if (!Usuario.validarCorreo(correo) || correo.isEmpty())
+                            System.out.println("Correo invalido");
+                        if (contrasenia.isEmpty() || !Usuario.validarContrasenia(contrasenia))
+                            System.out.println("Contraseña invalida\n");
 
                     } while (!Usuario.validarCorreo(correo) || nombre.isEmpty() || contrasenia.isEmpty() || !Usuario.validarContrasenia(contrasenia));
 
                     //COMPROBAR USUARIO ESTA REGISTRADO
                     if (usuario1 == null) {
-                        Articulo articulo1 = new Articulo("Xiami Redmi Note 10", "Movil en buen estado, 128ssd  y 6gb.", 400, 1);
+                        Articulo articulo1 = new Articulo("Xiaomi Redmi Note 10", "Movil en buen estado, 128ssd  y 6gb.", 400, 1);
                         Articulo articulo2 = new Articulo("MacBook Pro 13 principios del 2019", "Portatil casi nuevo,16gb de ram y 256ssd", 5000, 1);
 
                         usuario1 = new Usuario(correo, contrasenia, nombre, articulo1, articulo2);
@@ -199,8 +205,14 @@ public class main {
 
                                 switch (editarDato) {
                                     case 1:
-                                        System.out.println("Nombre completo:");
-                                        usuario1.setNombre(s.nextLine());
+                                        do {
+                                            System.out.println("Nombre completo:");
+                                            usuario1.setNombre(s.nextLine());
+                                            if (usuario1.getNombre().isEmpty())
+                                                System.out.println("Campo no rellenado!");
+
+                                        } while (usuario1.getNombre().isEmpty());
+
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
                                             System.out.print(".");
@@ -210,35 +222,43 @@ public class main {
                                         break;
                                     case 2:
                                         do {// validación de correo
-                                            System.out.println("Correo electronico:");
+                                            System.out.println("Correo electronico: ");
                                             usuario1.setCorreo(s.nextLine());
                                             System.out.print("Realizando cambio ");
                                             for (int i = 0; i < 1; i++) {
                                                 System.out.print(".");
                                                 TimeUnit.SECONDS.sleep(1);
                                             }
+
                                             System.out.println();
                                             if (!Usuario.validarCorreo(usuario1.getCorreo()))
-                                                System.out.println("Correo no valido, vuelve a introducir");
+                                                System.out.println("Correo no valido, vuelve a introducir.");
                                         } while (!Usuario.validarCorreo(usuario1.getCorreo()));
                                         break;
                                     case 3:
                                         do {//validacion de contraseña
-                                            System.out.println("Cambiar contraseña");
+                                            System.out.println("Cambiar contraseña: ");
                                             usuario1.setContrasenia(s.nextLine());
                                             System.out.print("Realizando cambio ");
                                             for (int i = 0; i < 1; i++) {
                                                 System.out.print(".");
                                                 TimeUnit.SECONDS.sleep(1);
                                             }
+
                                             System.out.println();
                                             if (!Usuario.validarContrasenia(usuario1.getContrasenia()) || usuario1.getContrasenia().isEmpty())
                                                 System.out.println("La contraseña debe ser mayor de 4 digitos y menor de 16.");
                                         } while (!Usuario.validarContrasenia(usuario1.getContrasenia()) || usuario1.getContrasenia().isEmpty());
                                         break;
                                     case 4:
-                                        System.out.println("Edad:");
-                                        usuario1.setEdad(23);
+                                        do {
+                                            System.out.println("Edad:");
+                                            usuario1.setEdad(23);
+                                            if (usuario1.getEdad() == 0)
+                                                System.out.println("Campo no rellenado!");
+
+                                        } while (usuario1.getEdad() == 0);
+
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
                                             System.out.print(".");
@@ -247,8 +267,14 @@ public class main {
                                         System.out.println();
                                         break;
                                     case 5:
-                                        System.out.println("Móvil:");
-                                        usuario1.setMovil(1313123);
+                                        do {
+                                            System.out.println("Móvil:");
+                                            usuario1.setMovil(1313123);
+                                            if (usuario1.getMovil() < 0 && usuario1.getMovil() > 9)
+                                                System.out.println("Campo rellenado incorrectamente!");
+
+                                        } while (usuario1.getMovil() < 0 && usuario1.getMovil() > 9);
+
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
                                             System.out.print(".");
@@ -257,8 +283,14 @@ public class main {
                                         System.out.println();
                                         break;
                                     case 6:
-                                        System.out.println("Dirección: ");
-                                        usuario1.setDirrecion("romero 7 martos");
+                                        do {
+                                            System.out.println("Dirección: ");
+                                            usuario1.setDirrecion("romero 7 martos");
+                                            if (usuario1.getDirrecion().isEmpty())
+                                                System.out.println("Campo no rellenado!");
+
+                                        } while (usuario1.getDirrecion().isEmpty());
+
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
                                             System.out.print(".");
@@ -287,8 +319,14 @@ public class main {
 
                                 switch (editarDato) {
                                     case 1:
-                                        System.out.println("Nombre completo:");
-                                        usuario2.setNombre(s.nextLine());
+                                        do {
+                                            System.out.println("Nombre completo:");
+                                            usuario2.setNombre(s.nextLine());
+                                            if (usuario2.getNombre().isEmpty())
+                                                System.out.println("Campo no rellenado!");
+
+                                        } while (usuario2.getNombre().isEmpty());
+
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
                                             System.out.print(".");
@@ -305,6 +343,7 @@ public class main {
                                                 System.out.print(".");
                                                 TimeUnit.SECONDS.sleep(1);
                                             }
+
                                             System.out.println();
                                             if (!Usuario.validarCorreo(usuario2.getCorreo()))
                                                 System.out.println("Correo no valido, vuelve a introducir");
@@ -319,14 +358,21 @@ public class main {
                                                 System.out.print(".");
                                                 TimeUnit.SECONDS.sleep(1);
                                             }
+
                                             System.out.println();
                                             if (!Usuario.validarContrasenia(usuario2.getContrasenia()) || usuario2.getContrasenia().isEmpty())
                                                 System.out.println("La contraseña debe ser mayor de 4 digitos y menor de 16.");
                                         } while (!Usuario.validarContrasenia(usuario2.getContrasenia()) || usuario2.getContrasenia().isEmpty());
                                         break;
                                     case 4:
-                                        System.out.println("Edad:");
-                                        usuario2.setEdad(23);
+                                        do {
+                                            System.out.println("Edad:");
+                                            usuario2.setEdad(23);
+                                            if (usuario2.getEdad() == 0)
+                                                System.out.println("Campo no rellenado!");
+
+                                        } while (usuario2.getEdad() == 0);
+
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
                                             System.out.print(".");
@@ -335,8 +381,14 @@ public class main {
                                         System.out.println();
                                         break;
                                     case 5:
-                                        System.out.println("Móvil:");
-                                        usuario2.setMovil(1313123);
+                                        do {
+                                            System.out.println("Móvil:");
+                                            usuario2.setMovil(1313123);
+                                            if (usuario2.getMovil() < 0 && usuario2.getMovil() > 9)
+                                                System.out.println("Campo rellenado incorrectamente!");
+
+                                        } while (usuario2.getMovil() < 0 && usuario2.getMovil() > 9);
+
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
                                             System.out.print(".");
@@ -345,8 +397,14 @@ public class main {
                                         System.out.println();
                                         break;
                                     case 6:
-                                        System.out.println("Dirección: ");
-                                        usuario2.setDirrecion("romero 7 martos");
+                                        do {
+                                            System.out.println("Dirección: ");
+                                            usuario2.setDirrecion("romero 7 martos");
+                                            if (usuario2.getDirrecion().isEmpty())
+                                                System.out.println("Campo no rellenado!");
+
+                                        } while (usuario2.getDirrecion().isEmpty());
+
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
                                             System.out.print(".");
@@ -393,7 +451,7 @@ public class main {
                                         }
                                     }
                                 } else {
-                                    System.out.println("No hay artículos en venta\n");
+                                    System.out.println("No hay artículos en venta.\n");
                                 }
 
                             } else if (usuario2Logeado) {
@@ -401,7 +459,7 @@ public class main {
                                 if (usuario2.getVenta() != null) {
                                     //Si el articulo ha comprado, te printea el articulo.
                                     if (articuloComprado2 || articuloBorrado2) {
-                                        System.out.println("Tus artículos ya no estan en venta");
+                                        System.out.println("Tus artículos ya no estan en venta.");
                                     } else {
                                         System.out.print("Cargando artículos ");
                                         for (int i = 0; i < 3; i++) {
@@ -425,7 +483,7 @@ public class main {
                                         }
                                     }
                                 } else {
-                                    System.out.println("No hay artículos en venta\n");
+                                    System.out.println("No hay artículos en venta.\n");
                                 }
                             }
 
@@ -463,7 +521,7 @@ public class main {
                                                         System.out.println("El artículo en venta es:");
                                                         System.out.println(usuario1.getArticulo1());
                                                         System.out.println();
-                                                        System.out.println("¿Deseas venderlo?");
+                                                        System.out.println("¿Deseas venderlo (si/no) ?");
                                                         String comprarArticulo = s.nextLine();
 
                                                         if (comprarArticulo.equalsIgnoreCase("si")) {
@@ -473,8 +531,8 @@ public class main {
                                                                 System.out.println("Ingresa un comentario que se mostrará en tú artículo.");
                                                                 comentario = s.nextLine();
                                                                 if (comentario.isEmpty())
-                                                                    System.out.println("No hubo ningún comentario, por favor agrega uno");
-                                                                else System.out.println("Comentario agregado");
+                                                                    System.out.println("No hubo ningún comentario, por favor agrega uno.");
+                                                                else System.out.println("Comentario agregado.");
                                                                 System.out.println();
                                                             } while (comentario.isEmpty());
 
@@ -505,7 +563,7 @@ public class main {
                                                         System.out.println("El artículo en venta es:");
                                                         System.out.println(usuario1.getArticulo2());
                                                         System.out.println();
-                                                        System.out.println("¿Deseas venderlo?");
+                                                        System.out.println("¿Deseas venderlo (si/no) ?");
                                                         String comprarArticulo = s.nextLine();
 
                                                         if (comprarArticulo.equalsIgnoreCase("si")) {
@@ -515,8 +573,8 @@ public class main {
                                                                 System.out.println("Ingresa un comentario que se mostrará en tú artículo.");
                                                                 comentario = s.nextLine();
                                                                 if (comentario.isEmpty())
-                                                                    System.out.println("No hubo ningún comentario, por favor agrega uno");
-                                                                else System.out.println("Comentario agregado");
+                                                                    System.out.println("No hubo ningún comentario, por favor agrega uno.");
+                                                                else System.out.println("Comentario agregado.");
                                                                 System.out.println();
                                                             } while (comentario.isEmpty());
 
@@ -543,7 +601,7 @@ public class main {
                                                     }
 
                                                 } else {
-                                                    System.out.println("Ya cerraste una venta,por favor vuelve a vender otro artículo.\n");
+                                                    System.out.println("Ya cerraste una venta,de momento no se pueden vender más artículos.\n");
                                                 }
                                             } else {
                                                 System.out.println("No se puede cerrar una venta ya que no hay ningún usuario disponible por el momento.\n");
@@ -552,7 +610,7 @@ public class main {
                                             break;
                                         case 2:
                                             //Quitara el articulo que este puesto en venta.
-                                           Thread.sleep(500);
+                                            Thread.sleep(500);
                                             if (usuario1.isArticulo1EnVenta()) {
                                                 System.out.println(usuario1.getArticulo1());
                                                 usuario1.setArticulo1EnVenta(false);
@@ -611,17 +669,18 @@ public class main {
                                                         System.out.println("El artículo en venta es:");
                                                         System.out.println(usuario2.getArticulo1());
 
-                                                        System.out.println("Deseas venderlo");
+                                                        System.out.println("¿ Deseas venderlo (si/no) ?");
                                                         String comprarArticulo = s.nextLine();
 
                                                         if (comprarArticulo.equalsIgnoreCase("si")) {
                                                             Articulo articuloAVender = usuario2.getArticulo1();
                                                             String comentario;
                                                             do {
-                                                                System.out.println("Ingresa un comentario que se mostrara en tú artículo");
+                                                                System.out.println("Ingresa un comentario que se mostrara en tú artículo.");
                                                                 comentario = s.nextLine();
-                                                                if (comentario.isEmpty()) System.out.println("No hubo ningún comentario, por favor agrega uno");
-                                                                else System.out.println("Comentario agregado");
+                                                                if (comentario.isEmpty())
+                                                                    System.out.println("No hubo ningún comentario, por favor agrega uno.");
+                                                                else System.out.println("Comentario agregado.");
                                                             } while (comentario.isEmpty());
 
                                                             //VENTA AL USUARIO:  usuario2 (usuario comprador) -> El usuario2 compra tu artículo
@@ -651,17 +710,18 @@ public class main {
                                                         System.out.println("El artículo en venta es:");
                                                         System.out.println(usuario2.getArticulo2());
 
-                                                        System.out.println("Deseas venderlo");
+                                                        System.out.println("¿ Deseas venderlo (si/no) ?");
                                                         String comprarArticulo = s.nextLine();
 
                                                         if (comprarArticulo.equalsIgnoreCase("si")) {
                                                             Articulo articuloAVender = usuario2.getArticulo2();
                                                             String comentario;
                                                             do {
-                                                                System.out.println("Ingresa un comentario que se mostrara en tú artículo");
+                                                                System.out.println("Ingresa un comentario que se mostrara en tú artículo.");
                                                                 comentario = s.nextLine();
-                                                                if (comentario.isEmpty()) System.out.println("No hubo ningún comentario, por favor agrega uno");
-                                                                else System.out.println("Comentario agregado");
+                                                                if (comentario.isEmpty())
+                                                                    System.out.println("No hubo ningún comentario, por favor agrega uno.");
+                                                                else System.out.println("Comentario agregado.");
                                                             } while (comentario.isEmpty());
 
                                                             //VENTA AL USUARIO:  usuario2 (usuario comprador) -> El usuario2 compra tu artículo
@@ -688,7 +748,7 @@ public class main {
                                                     }
 
                                                 } else {
-                                                    System.out.println("Ya cerraste una venta,por favor vuelve a vender otro articulo.\n");
+                                                    System.out.println("Ya cerraste una venta,de momento no se pueden vender más artículos.\n");
                                                 }
                                             } else {
                                                 System.out.println("No se puede cerrar una venta ya que no hay ningún usuario disponible por el momento.\n");
@@ -760,7 +820,8 @@ public class main {
                                         Venta ventaUsuario1 = new Venta(usuario1.getArticulo1(), usuario1.getArticulo1().getPrecio(), "Venta de prueba", usuario1.mostrarFecha(), usuario2);
                                         usuario1.setVenta(ventaUsuario1);
                                         usuario1.setArticulo1EnVenta(true);
-                                        articuloComprado1 = false; articuloBorrado1 = false;
+                                        articuloComprado1 = false;
+                                        articuloBorrado1 = false;
 
                                         System.out.print("Colocando artículo en venta ");
                                         for (int i = 0; i < 3; i++) {
@@ -774,7 +835,8 @@ public class main {
                                         Venta ventaUsuario1 = new Venta(usuario1.getArticulo2(), usuario1.getArticulo2().getPrecio(), "Venta en buen estado", usuario1.mostrarFecha(), usuario2);
                                         usuario1.setVenta(ventaUsuario1);
                                         usuario1.setArticulo2EnVenta(true);
-                                        articuloComprado1 = false; articuloBorrado1 = false;
+                                        articuloComprado1 = false;
+                                        articuloBorrado1 = false;
 
                                         System.out.print("Colocando artículo en venta ");
                                         for (int i = 0; i < 3; i++) {
@@ -811,7 +873,8 @@ public class main {
                                         Venta ventaUsuario2 = new Venta(usuario2.getArticulo1(), usuario2.getArticulo1().getPrecio(), "Producto al alacanze de tu bolsillo", usuario2.mostrarFecha(), usuario1);
                                         usuario2.setVenta(ventaUsuario2);
                                         usuario2.setArticulo1EnVenta(true);
-                                        articuloComprado2 = false; articuloBorrado2 = false;
+                                        articuloComprado2 = false;
+                                        articuloBorrado2 = false;
 
                                         System.out.print("Colocando artículo en venta ");
                                         for (int i = 0; i < 3; i++) {
@@ -824,7 +887,8 @@ public class main {
                                         Venta ventaUsuario2 = new Venta(usuario2.getArticulo2(), usuario2.getArticulo2().getPrecio(), "Disponible en todos lo modelos", usuario2.mostrarFecha(), usuario1);
                                         usuario2.setVenta(ventaUsuario2);
                                         usuario2.setArticulo2EnVenta(true);
-                                        articuloComprado2 = false; articuloBorrado2 = false;
+                                        articuloComprado2 = false;
+                                        articuloBorrado2 = false;
 
                                         System.out.print("Colocando artículo en venta ");
                                         for (int i = 0; i < 3; i++) {
@@ -936,11 +1000,12 @@ public class main {
                         case 8:
                             if (usuario1Logeado) {
                                 boolean comprado = false;
-
+                                String valoracion;
                                 //Comprobar si he comprado algo.
                                 if (usuario1.getCompra() != null) {
                                     //Compruebo si se realizo un comentario y una puntuacion.
-                                    if (usuario1.getCompra().getComentario() == null && usuario1.getCompra().getPuntuacion() == 0) {
+                                    if (usuario1.getCompra().getComentario() == null && usuario1.getCompra().getPuntuacion() == 0 && usuario1.getCompra().getValoradoPrimeraVez() == 0) {
+                                        usuario1.getCompra().setValoradoPrimeraVez(1);
                                         System.out.print("Cargando artículos comprados ");
                                         for (int i = 0; i < 3; i++) {
                                             System.out.print(".");
@@ -950,14 +1015,23 @@ public class main {
                                         System.out.println("Histórico de compras");
                                         System.out.println("El artículo comprado es: ");
                                         System.out.println(usuario1.getCompra());
-                                        System.out.println("Gracias por tu compra, por favor añade un comentario y puntuación");
-                                        System.out.println("Añade un comentario");
-                                        usuario1.getCompra().setComentario(s.nextLine());
-                                        if (usuario1.getCompra().getComentario().isEmpty())
-                                            System.out.println("No has ingresado ningún comentario");
-                                        System.out.println("Añade una puntuación, solo puedes calificar de 1 al 5");
-                                        usuario1.getCompra().setPuntuacion(Float.parseFloat(s.nextLine()));
-                                        System.out.println();
+                                        System.out.println("Gracias por tu compra, por favor valóranos");
+                                        System.out.println("1. Si claro!");
+                                        System.out.println("2. De momento no!");
+                                        valoracion = s.nextLine();
+
+                                        if (valoracion.equals("1")) {
+                                            System.out.println("Añade un comentario");
+                                            usuario1.getCompra().setComentario(s.nextLine());
+                                            System.out.println("Añade una puntuación, solo puedes califícar de 1 al 5");
+                                            usuario1.getCompra().setPuntuacion(Float.parseFloat(s.nextLine()));
+                                            System.out.println();
+                                        } else if (valoracion.equals("2")) {
+                                            System.out.println("Nos vemos pronto");
+                                        } else {
+                                            System.out.println("No has escogido ninguna opción");
+                                        }
+
                                     } else {
                                         System.out.print("Cargando artículos comprados ");
                                         for (int i = 0; i < 3; i++) {
@@ -981,11 +1055,12 @@ public class main {
 
                             } else if (usuario2Logeado) {
                                 boolean comprado = false;
-
-                                //Comprobar si he comprado algo
+                                String valoracion;
+                                //Comprobar si he comprado algo.
                                 if (usuario2.getCompra() != null) {
                                     //Compruebo si se realizo un comentario y una puntuacion.
-                                    if (usuario2.getCompra().getComentario() == null && usuario2.getCompra().getPuntuacion() == 0) {
+                                    if (usuario2.getCompra().getComentario() == null && usuario2.getCompra().getPuntuacion() == 0 && usuario2.getCompra().getValoradoPrimeraVez() == 0) {
+                                        usuario2.getCompra().setValoradoPrimeraVez(1);
                                         System.out.print("Cargando artículos comprados ");
                                         for (int i = 0; i < 3; i++) {
                                             System.out.print(".");
@@ -995,14 +1070,22 @@ public class main {
                                         System.out.println("Histórico de compras");
                                         System.out.println("El artículo comprado es: ");
                                         System.out.println(usuario2.getCompra());
-                                        System.out.println("Gracias por tu compra, por favor añade un comentario y puntuación");
-                                        System.out.println("Añade un comentario");
-                                        usuario2.getCompra().setComentario(s.nextLine());
-                                        if (usuario2.getCompra().getComentario().isEmpty())
-                                            System.out.println("No has ingresado ningún comentario");
-                                        System.out.println("Añade una puntuación, solo puedes calificar de 1 al 5");
-                                        usuario2.getCompra().setPuntuacion(Float.parseFloat(s.nextLine()));
-                                        System.out.println();
+                                        System.out.println("Gracias por tu compra, por favor valóranos");
+                                        System.out.println("1. Si claro!");
+                                        System.out.println("2. De momento no!");
+                                        valoracion = s.nextLine();
+                                        if (valoracion.equals("1")) {
+                                            System.out.println("Añade un comentario");
+                                            usuario2.getCompra().setComentario(s.nextLine());
+                                            System.out.println("Añade una puntuación, solo puedes califícar de 1 al 5");
+                                            usuario2.getCompra().setPuntuacion(Float.parseFloat(s.nextLine()));
+                                            System.out.println();
+                                        } else if (valoracion.equals("2")) {
+                                            System.out.println("Nos vemos pronto");
+                                        } else {
+                                            System.out.println("No has escogido ninguna opción");
+                                        }
+
                                     } else {
                                         System.out.print("Cargando artículos comprados ");
                                         for (int i = 0; i < 3; i++) {
@@ -1016,12 +1099,11 @@ public class main {
                                         System.out.println("Gracias por tú compra!\n");
                                     }
 
-
                                     comprado = true;
                                 }
 
                                 if (!comprado) {
-                                    System.out.println("No has comprado ningún artículo.\n");
+                                    System.out.println("No has comprado ningún artículo\n");
                                 }
                             }
                             break;
