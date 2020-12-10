@@ -74,7 +74,7 @@ public class Articulo {
     public String toString() {
         return  nombre +
                 "\n - Descripición: " + descrip +
-                "\n - Precio: " + precio +
+                "\n - Precio: " + precio + " €" +
                 "\n - Cantidad: " + cantidad;
     }
 }

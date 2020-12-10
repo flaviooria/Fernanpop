@@ -46,7 +46,6 @@ public class Usuario {
     }
     /**
      * Devuelve el nombre
-     *
      * @return nombre de usuario
      */
     public String getNombre() {
@@ -188,7 +187,7 @@ public class Usuario {
 
     //metodo para validar contraseña
     public static boolean validarContrasenia(String contrasenia) {
-        return contrasenia.length() > 4 &&  contrasenia.length() < 16;
+        return contrasenia.length() > 4 &&  contrasenia.length() <= 16;
     }
 
 

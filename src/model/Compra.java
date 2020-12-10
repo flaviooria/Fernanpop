@@ -85,7 +85,7 @@ public class Compra {
     @Override
     public String toString() {
         return  articulo.getNombre() +
-                "\n - Precio: " + precioFinal +
+                "\n - Precio: " + precioFinal + " €"+
                 "\n - Comentario de vendedor: " + ((vendedor.getVenta().getComentario()) == null ? "Ningún comentario por el momento" : vendedor.getVenta().getComentario()) +
                 "\n - Valoración: " + (vendedor.getVenta().getComprador().getCompra().getPuntuacion() == 0 ? "Ninguna puntuacion por el momento" : vendedor.getVenta().getComprador().getCompra().getPuntuacion())  +
                 "\n - Fecha de Compra: " + fecha  +
