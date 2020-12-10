@@ -5,10 +5,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Compra {
+
     /**
      * Atributos
      */
-
     private Articulo articulo;
     private float precioFinal;
     private float puntuacion;
@@ -17,9 +17,13 @@ public class Compra {
     private Usuario vendedor;
     private int valoradoPrimeraVez;
 
-    //constructor
-
-
+    /**
+     * Constructor
+     * @param articulo
+     * @param precioFinal
+     * @param fecha
+     * @param vendedor
+     */
     public Compra(Articulo articulo, float precioFinal, String fecha, Usuario vendedor) {
         this.articulo = articulo;
         this.precioFinal = precioFinal;
@@ -30,7 +34,6 @@ public class Compra {
     /**
      * Metodos
      */
-
     public Articulo getArticulo() {
         return articulo;
     }
@@ -44,7 +47,7 @@ public class Compra {
     }
 
     public void setPrecioFinal(float precioFinal) {
-        this.precioFinal = articulo.getPrecio() * 1.21f;
+        this.precioFinal = precioFinal;
     }
 
     public float getPuntuacion() {

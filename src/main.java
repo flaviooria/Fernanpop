@@ -9,16 +9,15 @@ import java.util.concurrent.TimeUnit;
 public class main {
     public static void main(String[] args) throws InterruptedException {
         var s = new Scanner(System.in);
+        Usuario usuario1 = null, usuario2 = null;
+        String correo, contrasenia, nombre, escogerArticulo;
+        int opcion, opcionSesion, opcion4;
         boolean logeado = false;
         boolean salir = false;
         boolean cerrarSesion = false;
-        int opcion, opcionSesion, opcion4;
-        Usuario usuario1 = null, usuario2 = null;
-        /*Articulo articulo1 = null, Articulo articulo2 = null;*/
-
         boolean usuario1Logeado = false, usuario2Logeado = false;
-        String correo, contrasenia, nombre, escogerArticulo;
-        boolean articuloComprado1 = false, articuloComprado2 = false, articuloBorrado1 = false, articuloBorrado2 = false;
+        boolean articuloComprado1 = false, articuloComprado2 = false;
+        boolean articuloBorrado1 = false, articuloBorrado2 = false;
 
         //BIENVENIDA
         System.out.println("* ************************************************************ *");

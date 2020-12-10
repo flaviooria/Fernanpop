@@ -5,17 +5,24 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Venta {
+
     /**
      * Atributos
      */
-
     private Articulo articulo;
     private float precioFinal;
     private String comentario;
     private String fecha;
     private Usuario comprador;
 
-    //constructor
+    /**
+     * Constructor
+     * @param articulo
+     * @param precioFinal
+     * @param comentario
+     * @param fecha
+     * @param comprador
+     */
     public Venta(Articulo articulo, float precioFinal, String comentario, String fecha, Usuario comprador) {
         this.articulo = articulo;
         this.precioFinal = precioFinal;
@@ -27,7 +34,6 @@ public class Venta {
     /**
      * Metodos
      */
-
     public Articulo getArticulo() {
         return articulo;
     }

@@ -1,11 +1,11 @@
 package model;
 
 public class Articulo {
+
     /**
      * Atributos
      */
-
-    private int articuloId;
+    private int articuloId = 0;
     private String nombre;
     private String descrip;
     private float precio;
@@ -19,7 +19,7 @@ public class Articulo {
      * @param cantidad
      */
     public Articulo( String nombre, String descrip, float precio, int cantidad) {
-        this.articuloId = articuloId;
+        articuloId++;
         this.nombre = nombre;
         this.descrip = descrip;
         this.precio = precio;
@@ -29,7 +29,6 @@ public class Articulo {
     /**
      * Metodos
      */
-
     public int getArticuloId() {
         return articuloId;
     }

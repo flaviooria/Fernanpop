@@ -9,6 +9,7 @@ import java.util.GregorianCalendar;
  * Clase usuario
  */
 public class Usuario {
+
     /**
      * Atributos
      */
@@ -28,7 +29,14 @@ public class Usuario {
     private String fechaActual;
 
 
-    //Constructor
+    /**
+     * Constructor
+     * @param email
+     * @param contrasenia
+     * @param nombre
+     * @param articulo1
+     * @param articulo2
+     */
     public Usuario(String email, String contrasenia, String nombre, Articulo articulo1, Articulo articulo2) {
         this.correo = email;
         this.contrasenia = contrasenia;
@@ -44,9 +52,9 @@ public class Usuario {
         this.contrasenia = contrasenia;
         this.nombre = nombre;
     }
+
     /**
-     * Devuelve el nombre
-     * @return nombre de usuario
+     *Metodos
      */
     public String getNombre() {
         return nombre;
@@ -93,7 +101,7 @@ public class Usuario {
     }
 
     public void setMovil(int movil) {
-        if (movil > 0 && movil < 10) this.movil = movil;
+        if (movil > 1 && movil < 10) this.movil = movil;
         else this.movil = 0;
     }
 
