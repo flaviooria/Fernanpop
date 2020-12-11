@@ -65,24 +65,32 @@ public class main {
                         Articulo articulo2 = new Articulo("MacBook Pro 13 principios del 2019", "Portatil casi nuevo,16gb de ram y 256ssd", 1500, 1);
 
                         usuario1 = new Usuario(correo, contrasenia, nombre, articulo1, articulo2);
+
+                        System.out.print("Registrando cuenta ");
+                        for (int i = 0; i < 3; i++) {
+                            System.out.print(".");
+                            TimeUnit.SECONDS.sleep(1);
+                        }
+                        System.out.println();
+                        System.out.println();
                     } else if (usuario2 == null) {
                         Articulo articulo1 = new Articulo("SMART TV LG 42' pulgadas ", "Televisor smart tv, incluye 3 puertos hdmi, 4k", 600, 1);
                         Articulo articulo2 = new Articulo("Google Chromecast", "Chromecast", 35, 1);
 
                         usuario2 = new Usuario(correo, contrasenia, nombre, articulo1, articulo2);
 
+                        System.out.print("Registrando cuenta ");
+                        for (int i = 0; i < 3; i++) {
+                            System.out.print(".");
+                            TimeUnit.SECONDS.sleep(1);
+                        }
+                        System.out.println();
+                        System.out.println();
+
                     } else {
                         System.out.println("De momento no se pueden registrar más usuarios.\n");
                     }
 
-
-                    System.out.print("Registrando cuenta ");
-                    for (int i = 0; i < 3; i++) {
-                        System.out.print(".");
-                        TimeUnit.SECONDS.sleep(1);
-                    }
-                    System.out.println();
-                    System.out.println();
                     break;
                 case 2:
                     //INICIO SESIÓN
@@ -93,7 +101,7 @@ public class main {
                     correo = s.nextLine();
                     System.out.print("Introduce tú contraseña: ");
                     contrasenia = s.nextLine();
-
+                    System.out.println();
 
                     //Comprueba si el correo y contraseña son validos.
                     if (usuario1 != null && !logeado) {
@@ -171,6 +179,7 @@ public class main {
                                     TimeUnit.SECONDS.sleep(1);
                                 }
                                 System.out.println();
+                                System.out.println();
                                 System.out.println(usuario1);
                                 System.out.println();
                             } else if (usuario2Logeado) {
@@ -179,6 +188,7 @@ public class main {
                                     System.out.print(".");
                                     TimeUnit.SECONDS.sleep(1);
                                 }
+                                System.out.println();
                                 System.out.println();
                                 System.out.println(usuario2);
                                 System.out.println();
@@ -204,6 +214,7 @@ public class main {
                                 System.out.println("|    6.  Direccion                               |");
                                 System.out.println("| ********************************************** |");
                                 editarDato = Integer.parseInt(s.nextLine());
+                                System.out.println();
 
                                 switch (editarDato) {
                                     case 1:
@@ -272,10 +283,10 @@ public class main {
                                         do {
                                             System.out.println("Móvil:");
                                             usuario1.setMovil(1313123);
-                                            if (usuario1.getMovil() < 1 && usuario1.getMovil() > 9)
+                                            if (usuario1.getMovil() < 0 && usuario1.getMovil() > 9)
                                                 System.out.println("Campo rellenado incorrectamente!");
 
-                                        } while (usuario1.getMovil() < 1 && usuario1.getMovil() > 9);
+                                        } while (usuario1.getMovil() < 0 && usuario1.getMovil() > 9);
 
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
@@ -318,6 +329,7 @@ public class main {
                                 System.out.println("|    6.  Direccion                               |");
                                 System.out.println("| ********************************************** |");
                                 editarDato = Integer.parseInt(s.nextLine());
+                                System.out.println();
 
                                 switch (editarDato) {
                                     case 1:
@@ -386,10 +398,10 @@ public class main {
                                         do {
                                             System.out.println("Móvil:");
                                             usuario2.setMovil(1313123);
-                                            if (usuario2.getMovil() < 1 && usuario2.getMovil() > 9)
+                                            if (usuario2.getMovil() < 0 && usuario2.getMovil() > 9)
                                                 System.out.println("Campo rellenado incorrectamente!");
 
-                                        } while (usuario2.getMovil() < 1 && usuario2.getMovil() > 9);
+                                        } while (usuario2.getMovil() < 0 && usuario2.getMovil() > 9);
 
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
