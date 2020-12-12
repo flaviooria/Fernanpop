@@ -101,8 +101,7 @@ public class Usuario {
     }
 
     public void setMovil(int movil) {
-        if (movil > 9) this.movil = 0;
-        else this.movil = movil;
+       this.movil = movil;
     }
 
     public String getDirrecion() {
@@ -169,15 +168,14 @@ public class Usuario {
 
     //metodo para validar  correo
     public static boolean validarCorreo(String correoIntroducido) {
-        int longitud = correoIntroducido.length();
         char arroba = '@';
         char valor;
 
-        for (char i = 0; i < longitud; i++) {
+        for (char i = 0; i < correoIntroducido.length(); i++) {
             valor = correoIntroducido.charAt(i);
             if (valor == arroba) {
                 return true;
-            } else if (i == longitud - 1) {
+            } else if (i == correoIntroducido.length() - 1) {
                 return false;
             }
         }

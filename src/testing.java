@@ -21,7 +21,7 @@ public class testing {
             System.out.println("Indica nombre");
             String nombre = s.nextLine();
             System.out.println("indica correo");
-            correo = s. nextLine();
+            correo = s.nextLine();
             System.out.println("indica contraseña");
             contrasenia = s.nextLine();
             user1 = new Usuario(correo, contrasenia, nombre);
@@ -32,7 +32,7 @@ public class testing {
         System.out.println(user1);
 
         //Probando fecha trayendo el metoodo mostrarFecha()
-        System.out.println("la fecha actual es: "+user1.mostrarFecha());
+//        System.out.println("la fecha actual es: " + user1.mostrarFecha());
 
         /* Esto lo utilizo en el metodo mostra fecha de esta forma tambien puede imprimir tu fecha
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
@@ -41,8 +41,7 @@ public class testing {
         System.out.println(sdf.format(fechaActual.getTime()));*/
 
 
-        //Para validar emails
-        /* // Patrón para validar el email
+        /* Patrón para validar el email
         Pattern pattern = Pattern
                 .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
@@ -55,9 +54,9 @@ public class testing {
         } else {
             System.out.println("El email ingresado es inválido.");
         }
-    } */
+    }
 
-        /*//Otro metodo sin clases pattern y mather
+        Otro metodo sin clases pattern y mather
         String correo = "flavio";
         int longitud = correo.length();
         char arroba = '@';

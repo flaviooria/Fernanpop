@@ -6,7 +6,7 @@ import model.Venta;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class main {
+public class FernanPop {
     public static void main(String[] args) throws InterruptedException {
         var s = new Scanner(System.in);
         Usuario usuario1 = null, usuario2 = null;
@@ -282,9 +282,9 @@ public class main {
                                         do {
                                             System.out.println("Móvil:");
                                             usuario1.setMovil(Integer.parseInt(s.nextLine()));
-                                            if (usuario1.getMovil() > 9 && usuario1.getMovil() < 0)
+                                            if (usuario1.getMovil() == 0)
                                                 System.out.println("Campo rellenado incorrectamente!");
-                                        } while (usuario1.getMovil() > 9 && usuario1.getMovil() < 0);
+                                        } while (usuario1.getMovil() == 0);
 
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
@@ -296,7 +296,7 @@ public class main {
                                     case 6:
                                         do {
                                             System.out.println("Dirección: ");
-                                            usuario1.setDirrecion("romero 7 martos");
+                                            usuario1.setDirrecion(s.nextLine());
                                             if (usuario1.getDirrecion().isEmpty())
                                                 System.out.println("Campo no rellenado!");
                                         } while (usuario1.getDirrecion().isEmpty());
@@ -393,9 +393,9 @@ public class main {
                                         do {
                                             System.out.println("Móvil:");
                                             usuario2.setMovil(Integer.parseInt(s.nextLine()));
-                                            if (usuario2.getMovil() > 0 && usuario2.getMovil() < 10)
+                                            if (usuario2.getMovil() == 0)
                                                 System.out.println("Campo rellenado incorrectamente!");
-                                        } while (usuario2.getMovil() < 0 && usuario2.getMovil() > 9);
+                                        } while (usuario2.getMovil() == 0);
 
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
@@ -407,7 +407,7 @@ public class main {
                                     case 6:
                                         do {
                                             System.out.println("Dirección: ");
-                                            usuario2.setDirrecion("romero 7 martos");
+                                            usuario2.setDirrecion(s.nextLine());
                                             if (usuario2.getDirrecion().isEmpty())
                                                 System.out.println("Campo no rellenado!");
                                         } while (usuario2.getDirrecion().isEmpty());
@@ -691,6 +691,7 @@ public class main {
                                                                 if (comentario.isEmpty())
                                                                     System.out.println("No hubo ningún comentario, por favor agrega uno.");
                                                                 else System.out.println("Comentario agregado.");
+                                                                System.out.println();
                                                             } while (comentario.isEmpty());
 
                                                             //VENTA AL USUARIO:  usuario2 (usuario comprador) -> El usuario2 compra tu artículo.
@@ -732,6 +733,7 @@ public class main {
                                                                 if (comentario.isEmpty())
                                                                     System.out.println("No hubo ningún comentario, por favor agrega uno.");
                                                                 else System.out.println("Comentario agregado.");
+                                                                System.out.println();
                                                             } while (comentario.isEmpty());
 
                                                             //VENTA AL USUARIO:  usuario2 (usuario comprador) -> El usuario2 compra tu artículo.
