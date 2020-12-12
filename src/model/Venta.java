@@ -73,7 +73,7 @@ public class Venta {
                 "\n - Comentario del comprador: " + ((comprador.getCompra().getComentario()) == null ? "Ningún comentario por el momento." : comprador.getCompra().getComentario()) +
                 "\n - Fecha de Venta: " + fecha +
                 "\n - Comprado por: " + comprador.getNombre()  +
-                "\n - Correo: " + comprador.getCorreo() +
+                "\n - Correo comprador: " + comprador.getCorreo() +
                 "\n - Puntuacion: " + ((comprador.getCompra().getPuntuacion()) == 0 ? "Ninguna puntuación por el momento." : comprador.getCompra().getPuntuacion());
     }
 }

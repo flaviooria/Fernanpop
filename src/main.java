@@ -195,14 +195,15 @@ public class main {
                             }
                             break;
                         case 2:// editar datos
+                            System.out.print("Cargando ");
+                            for (int i = 0; i < 2; i++) {
+                                System.out.print(".");
+                                TimeUnit.SECONDS.sleep(1);
+                            }
+                            System.out.println();
+
                             if (usuario1Logeado) {
                                 int editarDato;
-                                System.out.print("Cargando ");
-                                for (int i = 0; i < 2; i++) {
-                                    System.out.print(".");
-                                    TimeUnit.SECONDS.sleep(1);
-                                }
-                                System.out.println();
 
                                 System.out.println("| ********************************************** |");
                                 System.out.println("|    - Elige el dato que deseas cambiar.         |");
@@ -223,7 +224,6 @@ public class main {
                                             usuario1.setNombre(s.nextLine());
                                             if (usuario1.getNombre().isEmpty())
                                                 System.out.println("Campo no rellenado!");
-
                                         } while (usuario1.getNombre().isEmpty());
 
                                         System.out.print("Realizando cambio ");
@@ -237,12 +237,12 @@ public class main {
                                         do {// validación de correo
                                             System.out.println("Correo electronico: ");
                                             usuario1.setCorreo(s.nextLine());
+
                                             System.out.print("Realizando cambio ");
                                             for (int i = 0; i < 1; i++) {
                                                 System.out.print(".");
                                                 TimeUnit.SECONDS.sleep(1);
                                             }
-
                                             System.out.println();
                                             if (!Usuario.validarCorreo(usuario1.getCorreo()))
                                                 System.out.println("Correo no valido, vuelve a introducir.");
@@ -252,12 +252,12 @@ public class main {
                                         do {//validacion de contraseña
                                             System.out.println("Cambiar contraseña: ");
                                             usuario1.setContrasenia(s.nextLine());
+
                                             System.out.print("Realizando cambio ");
                                             for (int i = 0; i < 1; i++) {
                                                 System.out.print(".");
                                                 TimeUnit.SECONDS.sleep(1);
                                             }
-
                                             System.out.println();
                                             if (!Usuario.validarContrasenia(usuario1.getContrasenia()) || usuario1.getContrasenia().isEmpty())
                                                 System.out.println("La contraseña debe ser mayor de 4 digitos y menor de 16.");
@@ -266,10 +266,9 @@ public class main {
                                     case 4:
                                         do {
                                             System.out.println("Edad:");
-                                            usuario1.setEdad(23);
+                                            usuario1.setEdad(Integer.parseInt(s.nextLine()));
                                             if (usuario1.getEdad() == 0)
                                                 System.out.println("Campo no rellenado!");
-
                                         } while (usuario1.getEdad() == 0);
 
                                         System.out.print("Realizando cambio ");
@@ -282,11 +281,10 @@ public class main {
                                     case 5:
                                         do {
                                             System.out.println("Móvil:");
-                                            usuario1.setMovil(1313123);
-                                            if (usuario1.getMovil() < 0 && usuario1.getMovil() > 9)
+                                            usuario1.setMovil(Integer.parseInt(s.nextLine()));
+                                            if (usuario1.getMovil() > 9 && usuario1.getMovil() < 0)
                                                 System.out.println("Campo rellenado incorrectamente!");
-
-                                        } while (usuario1.getMovil() < 0 && usuario1.getMovil() > 9);
+                                        } while (usuario1.getMovil() > 9 && usuario1.getMovil() < 0);
 
                                         System.out.print("Realizando cambio ");
                                         for (int i = 0; i < 1; i++) {
@@ -301,7 +299,6 @@ public class main {
                                             usuario1.setDirrecion("romero 7 martos");
                                             if (usuario1.getDirrecion().isEmpty())
                                                 System.out.println("Campo no rellenado!");
-
                                         } while (usuario1.getDirrecion().isEmpty());
 
                                         System.out.print("Realizando cambio ");
@@ -338,7 +335,6 @@ public class main {
                                             usuario2.setNombre(s.nextLine());
                                             if (usuario2.getNombre().isEmpty())
                                                 System.out.println("Campo no rellenado!");
-
                                         } while (usuario2.getNombre().isEmpty());
 
                                         System.out.print("Realizando cambio ");
@@ -352,12 +348,12 @@ public class main {
                                         do {// validación de correo
                                             System.out.println("Correo electronico:");
                                             usuario2.setCorreo(s.nextLine());
+
                                             System.out.print("Realizando cambio ");
                                             for (int i = 0; i < 1; i++) {
                                                 System.out.print(".");
                                                 TimeUnit.SECONDS.sleep(1);
                                             }
-
                                             System.out.println();
                                             if (!Usuario.validarCorreo(usuario2.getCorreo()))
                                                 System.out.println("Correo no valido, vuelve a introducir");
@@ -367,12 +363,12 @@ public class main {
                                         do {//validacion de contraseña
                                             System.out.println("Cambiar contraseña");
                                             usuario2.setContrasenia(s.nextLine());
+
                                             System.out.print("Realizando cambio ");
                                             for (int i = 0; i < 1; i++) {
                                                 System.out.print(".");
                                                 TimeUnit.SECONDS.sleep(1);
                                             }
-
                                             System.out.println();
                                             if (!Usuario.validarContrasenia(usuario2.getContrasenia()) || usuario2.getContrasenia().isEmpty())
                                                 System.out.println("La contraseña debe ser mayor de 4 digitos y menor de 16.");
@@ -381,10 +377,9 @@ public class main {
                                     case 4:
                                         do {
                                             System.out.println("Edad:");
-                                            usuario2.setEdad(23);
+                                            usuario2.setEdad(Integer.parseInt(s.nextLine()));
                                             if (usuario2.getEdad() == 0)
                                                 System.out.println("Campo no rellenado!");
-
                                         } while (usuario2.getEdad() == 0);
 
                                         System.out.print("Realizando cambio ");
@@ -397,10 +392,9 @@ public class main {
                                     case 5:
                                         do {
                                             System.out.println("Móvil:");
-                                            usuario2.setMovil(1313123);
-                                            if (usuario2.getMovil() < 0 && usuario2.getMovil() > 9)
+                                            usuario2.setMovil(Integer.parseInt(s.nextLine()));
+                                            if (usuario2.getMovil() > 0 && usuario2.getMovil() < 10)
                                                 System.out.println("Campo rellenado incorrectamente!");
-
                                         } while (usuario2.getMovil() < 0 && usuario2.getMovil() > 9);
 
                                         System.out.print("Realizando cambio ");
@@ -416,7 +410,6 @@ public class main {
                                             usuario2.setDirrecion("romero 7 martos");
                                             if (usuario2.getDirrecion().isEmpty())
                                                 System.out.println("Campo no rellenado!");
-
                                         } while (usuario2.getDirrecion().isEmpty());
 
                                         System.out.print("Realizando cambio ");

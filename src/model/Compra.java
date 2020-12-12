@@ -90,9 +90,8 @@ public class Compra {
         return  articulo.getNombre() +
                 "\n - Precio: " + precioFinal + " €"+
                 "\n - Comentario de vendedor: " + ((vendedor.getVenta().getComentario()) == null ? "Ningún comentario por el momento" : vendedor.getVenta().getComentario()) +
-                "\n - Valoración: " + (vendedor.getVenta().getComprador().getCompra().getPuntuacion() == 0 ? "Ninguna puntuacion por el momento" : vendedor.getVenta().getComprador().getCompra().getPuntuacion())  +
                 "\n - Fecha de Compra: " + fecha  +
                 "\n - Vendido por: " + vendedor.getNombre() +
-                "\n - Correo: " + vendedor.getCorreo();
+                "\n - Correo vendedor: " + vendedor.getCorreo();
     }
 }

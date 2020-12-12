@@ -101,8 +101,8 @@ public class Usuario {
     }
 
     public void setMovil(int movil) {
-        if (movil > 0 && movil < 10) this.movil = movil;
-        else this.movil = 0;
+        if (movil > 9) this.movil = 0;
+        else this.movil = movil;
     }
 
     public String getDirrecion() {
